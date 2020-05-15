@@ -86,6 +86,13 @@
 
 ### TO-DO
 -[ ] Login
-    -[ ] Github
-    -[ ] Google
- 
+    -[ ] Github : Oauth2 -> jwt -> jwt 기준 권한 관리 (1차)
+    -[ ] Google : Oauth2 -> jwt -> jwt 기준 권한 관리 (1차)
+-[ ] 상품
+    -[ ] create
+    -[ ] read
+    -[ ] update
+    -[ ] delete
+    -[ ] 추가
+-[ ] Login
+    -[ ] 권한 설정파일을 통한 관리 
