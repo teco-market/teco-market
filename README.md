@@ -85,14 +85,17 @@
 - 따로 공부나 더 깊게 구현할 수 있는 부분들
 
 ### TO-DO
--[ ] Login
-    -[ ] Github : Oauth2 -> jwt -> jwt 기준 권한 관리 (1차)
-    -[ ] Google : Oauth2 -> jwt -> jwt 기준 권한 관리 (1차)
--[ ] 상품
-    -[ ] create
-    -[ ] read
-    -[ ] update
-    -[ ] delete
-    -[ ] 추가
+- [x] Login
+    - [ ] Github : Oauth2 -> jwt -> jwt 기준 권한 관리 (1차)
+    - [x] Google : Oauth2 -> jwt -> jwt 기준 권한 관리 (1차)
+    - [ ] 리팩토링
+-[x] 상품
+    - [x] create
+    - [x] read
+    - [x] update
+    - [x] delete
+    - [ ] 추가
+    - [ ] 이미지 업로드
+    - [ ] 페이징 
 -[ ] Login
     -[ ] 권한 설정파일을 통한 관리 

@@ -9,10 +9,8 @@ public class Oauth2GoogleUriBuilder {
     private final String AUTHORIZE_URI = "https://accounts.google.com/o/oauth2/auth";
     private static final String CLIENT_ID = "client_id";
     private static final String ACCESS_TYPE = "access_type";
-    private static final String CLIENT_SECRET = "client_secret";
     private static final String REDIRECT_URI = "redirect_uri";
     private static final String RESPONSE_TYPE = "response_type";
-    private static final String CODE = "code";
     private static final String SCOPE = "scope";
 
     private final String clientId;

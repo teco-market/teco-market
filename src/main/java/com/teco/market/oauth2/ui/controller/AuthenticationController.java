@@ -19,8 +19,7 @@ public class AuthenticationController {
     private final Oauth2GoogleClient oauth2GoogleClient;
     private final WebClient webClient;
 
-    public AuthenticationController(Oauth2GoogleClient oauth2GoogleClient,
-        WebClient.Builder webClientBuilder) {
+    public AuthenticationController(Oauth2GoogleClient oauth2GoogleClient, WebClient.Builder webClientBuilder) {
         this.oauth2GoogleClient = oauth2GoogleClient;
         this.webClient = webClientBuilder.build();
     }
@@ -41,6 +40,7 @@ public class AuthenticationController {
                     .build())
             .retrieve()
             .bodyToMono(GoogleTokenResponse.class).block();
+
         GoogleUserInfo userInfo = WebClient.create("https://www.googleapis.com")
             .get()
             .uri(uriBuilder ->

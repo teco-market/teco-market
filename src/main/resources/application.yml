@@ -1,0 +1,27 @@
+google:
+  clientId: 32254417687-3j3n979u9n2i6riubcpgi1au2pq2p13q.apps.googleusercontent.com
+  clientSecret: 9Y3ZyjqlIgvMSxU6B7NH5S63
+  redirectUri: http://localhost:8080/oauth2/google
+  responseType: code
+  scope: https://www.googleapis.com/auth/userinfo.email  https://www.googleapis.com/auth/userinfo.profile
+  accessType: offline
+
+spring:
+  datasource:
+    url:
+    username:
+    password:
+    driver-class-name:
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format-sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type: trace
+
