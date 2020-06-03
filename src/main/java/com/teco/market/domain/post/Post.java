@@ -14,9 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.teco.market.domain.category.Category;
-import com.teco.market.domain.comment.Comment;
 import com.teco.market.domain.image.Photo;
 import com.teco.market.domain.image.Thumbnail;
 import com.teco.market.domain.like.Like;
@@ -47,12 +47,7 @@ public class Post {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "post_id")
-    private List<Comment> comments;
-
-    // TODO: 2020/06/03 ==========
-    @CollectionTable(name = "photo", joinColumns = @JoinColumn(name = "post_id"))
+    @OneToOne(mappedBy = "post")
     private Thumbnail thumbnail;
 
     @ElementCollection
