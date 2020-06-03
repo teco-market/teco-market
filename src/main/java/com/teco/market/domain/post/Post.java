@@ -51,6 +51,7 @@ public class Post {
     @JoinColumn(name = "post_id")
     private List<Comment> comments;
 
+    // TODO: 2020/06/03 ==========
     @CollectionTable(name = "photo", joinColumns = @JoinColumn(name = "post_id"))
     private Thumbnail thumbnail;
 
