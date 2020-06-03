@@ -1,6 +1,7 @@
 plugins {
     id 'org.springframework.boot' version '2.2.6.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
     id 'java'
 }
 
@@ -28,6 +29,8 @@ dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.2.6.RELEASE'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'com.auth0:java-jwt:3.10.3'
+    //querydsl 추가
+    implementation 'com.querydsl:querydsl-jpa'
     compileOnly 'org.projectlombok:lombok'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: '2.2.6.RELEASE'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -41,4 +44,19 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+def querydslDir = "$buildDir/generated/querydsl"
+querydsl {
+    jpa = true
+    querydslSourcesDir = querydslDir
+}
+sourceSets {
+    main.java.srcDir querydslDir
+}
+configurations {
+    querydsl.extendsFrom compileClasspath
+}
+compileQuerydsl {
+    options.annotationProcessorPath = configurations.querydsl
 }
