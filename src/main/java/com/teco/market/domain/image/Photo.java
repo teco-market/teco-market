@@ -1,4 +1,4 @@
-package com.teco.market.image;
+package com.teco.market.domain.image;
 
 import javax.persistence.Embeddable;
 

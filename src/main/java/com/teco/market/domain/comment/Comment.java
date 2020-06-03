@@ -1,4 +1,4 @@
-package com.teco.market.comment;
+package com.teco.market.domain.comment;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,7 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
-import com.teco.market.member.Member;
+import com.teco.market.domain.member.Member;
 
 @Entity
 public class Comment {

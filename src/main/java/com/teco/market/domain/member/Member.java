@@ -1,4 +1,4 @@
-package com.teco.market.member;
+package com.teco.market.domain.member;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
-import com.teco.market.comment.Comment;
-import com.teco.market.like.Like;
+import com.teco.market.domain.comment.Comment;
+import com.teco.market.domain.like.Like;
 
 @Entity
 public class Member {

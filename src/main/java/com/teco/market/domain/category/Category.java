@@ -1,4 +1,4 @@
-package com.teco.market.category;
+package com.teco.market.domain.category;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

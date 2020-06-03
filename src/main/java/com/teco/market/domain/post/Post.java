@@ -1,4 +1,4 @@
-package com.teco.market.post;
+package com.teco.market.domain.post;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,13 +15,18 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.teco.market.category.Category;
-import com.teco.market.comment.Comment;
-import com.teco.market.image.Photo;
-import com.teco.market.image.Thumbnail;
-import com.teco.market.like.Like;
-import com.teco.market.member.Member;
+import com.teco.market.domain.category.Category;
+import com.teco.market.domain.comment.Comment;
+import com.teco.market.domain.image.Photo;
+import com.teco.market.domain.image.Thumbnail;
+import com.teco.market.domain.like.Like;
+import com.teco.market.domain.member.Member;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Post {
     @Id

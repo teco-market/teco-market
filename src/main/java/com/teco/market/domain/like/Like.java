@@ -1,4 +1,4 @@
-package com.teco.market.like;
+package com.teco.market.domain.like;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
