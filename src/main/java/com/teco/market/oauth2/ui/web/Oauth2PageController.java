@@ -1,4 +1,4 @@
-package com.teco.market.oauth2.ui.controller;
+package com.teco.market.oauth2.ui.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Controller
-public class Oauth2Controller {
+public class Oauth2PageController {
     private final Oauth2GoogleUriBuilder oauth2UriBuilder;
 
     @GetMapping("/google/oauth2")

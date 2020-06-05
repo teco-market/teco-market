@@ -1,18 +1,13 @@
 package com.teco.market.domain.category;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
+import com.teco.market.domain.BaseEntity;
 import lombok.Getter;
 
 @Getter
 @Entity
-public class Category {
-
-    @Id
-    @GeneratedValue
-    private Long id;
+public class Category extends BaseEntity {
 
     private String name;
 }
