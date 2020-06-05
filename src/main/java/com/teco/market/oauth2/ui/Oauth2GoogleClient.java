@@ -19,7 +19,7 @@ public class Oauth2GoogleClient {
 
     public GoogleTokenRequest requestToken(String code) {
         return new GoogleTokenRequest(code, clientId, clientSecret,
-            "http://localhost:8080/oauth2/google",
+            "http://localhost:3000/oauth2/google",
             "authorization_code");
     }
 }

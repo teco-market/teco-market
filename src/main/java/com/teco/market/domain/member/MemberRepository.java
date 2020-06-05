@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.teco.market.oauth2.ui.user.PlatformType;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
-    Optional<Member> findByPlatformIdAndPlatformType(String sub, PlatformType google);
+    Optional<Member> findByPlatformIdAndPlatformType(String platformId, PlatformType platformType);
 }

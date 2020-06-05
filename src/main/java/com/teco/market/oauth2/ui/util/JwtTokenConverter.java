@@ -25,8 +25,7 @@ public class JwtTokenConverter {
 
     public void validateToken(String token) {
         try {
-            JWTVerifier verifier = JWT.require(Algorithm.HMAC256(SECRET))
-                .build();
+            JWTVerifier verifier = JWT.require(Algorithm.HMAC256(SECRET)).build();
             verifier.verify(token);
         } catch (JWTVerificationException exception) {
             throw new InvalidJwtTokenException();

@@ -19,12 +19,10 @@ public class AuthenticationService {
 
     public String authGoogle(AuthInfoRequest authInfoRequest) {
         GoogleUserInfo googleUserInfo = googleAuthRepository.auth(authInfoRequest);
-        Member member = memberRepository.findByPlatformIdAndPlatformType(googleUserInfo.getSub(),
-            PlatformType.GOOGLE)
-            .orElseGet(() -> new Member(googleUserInfo.getSub(), PlatformType.GOOGLE, googleUserInfo.fullName()));
-        if (member.getId() == null) {
-            memberRepository.save(member);
-        }
+        Member member = memberRepository.findByPlatformIdAndPlatformType(googleUserInfo.getSub(), PlatformType.GOOGLE)
+            .orElseGet(() -> memberRepository.save(
+                new Member(googleUserInfo.getSub(), PlatformType.GOOGLE, googleUserInfo.fullName())));
+
         return JwtTokenConverter.create(member.getId());
     }
 }

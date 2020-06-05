@@ -6,6 +6,5 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class AuthInfoRequest {
-    private String type;
     private String code;
 }

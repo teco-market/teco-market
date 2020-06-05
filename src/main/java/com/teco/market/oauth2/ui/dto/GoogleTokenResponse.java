@@ -17,8 +17,6 @@ public class GoogleTokenResponse {
     private String refreshToken;
     @JsonProperty("scope")
     private String scope;
-    @JsonProperty("token_type")
-    private String tokenType;
     @JsonProperty("id_token")
     private String idToken;
 }

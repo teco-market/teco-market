@@ -19,12 +19,11 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(bearerAuthInterceptor)
-            .addPathPatterns("/**");
+      //  registry.addInterceptor(bearerAuthInterceptor);
     }
 
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
-        resolvers.add(loginMemberArgumentResolver);
+     //   resolvers.add(loginMemberArgumentResolver);
     }
 }
