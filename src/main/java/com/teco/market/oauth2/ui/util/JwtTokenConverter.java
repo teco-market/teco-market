@@ -31,7 +31,6 @@ public class JwtTokenConverter {
             .withIssuedAt(convertDateFrom(LocalDateTime.now()))
             .withExpiresAt(convertDateFrom(LocalDateTime.now().plusDays(7)))
             .sign(algorithm);
-
     }
 
     public void validateToken(String token) {

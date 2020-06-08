@@ -9,18 +9,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.teco.market.domain.member.Member;
 import com.teco.market.domain.member.MemberService;
-import com.teco.market.domain.member.Role;
-import com.teco.market.oauth2.ui.web.AllowRole;
 import com.teco.market.oauth2.ui.web.LoginMember;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @RequestMapping("/me")
 @RestController
-public class LoginMemberController {
+public class MemberController {
     private final MemberService memberService;
 
-    @AllowRole(roles = { Role.ADMIN, Role.USER, Role.GUEST })
     public ResponseEntity<Void> updateInfo(@LoginMember Member member, @Valid @RequestBody MemberUpdateRequest request) {
         memberService.update(member, request);
         return ResponseEntity.ok().build();

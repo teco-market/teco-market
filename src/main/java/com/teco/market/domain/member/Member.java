@@ -45,6 +45,10 @@ public class Member extends BaseEntity {
 
     public void setRequiredInfo(String nickname, Generation generation) {
         this.nickname = nickname;
+        setGeneration(generation);
+    }
+
+    private void setGeneration(Generation generation) {
         this.generation = generation;
         generation.addMember(this);
     }

@@ -1,5 +1,6 @@
 package com.teco.market.domain.post;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +38,8 @@ public class Post extends BaseEntity {
 
     @OneToOne(mappedBy = "post")
     private Thumbnail thumbnail;
+
+    private BigDecimal price;
 
     @ElementCollection
     @CollectionTable(name = "photo", joinColumns = @JoinColumn(name = "post_id"))
