@@ -1,11 +1,17 @@
 package com.teco.market.oauth2.ui.util;
 
+import static com.teco.market.util.DateUtil.*;
+
+import java.time.LocalDateTime;
+
 import org.springframework.stereotype.Component;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.interfaces.DecodedJWT;
+import com.teco.market.domain.member.Role;
 import com.teco.market.exception.InvalidJwtTokenException;
 
 @Component
@@ -16,11 +22,16 @@ public class JwtTokenConverter {
     public static final String TYPE = "type";
     public static final String GOOGLE = "google";
 
-    public static String create(Long id) {
+    public static String create(Long id, Role role) {
         Algorithm algorithm = Algorithm.HMAC256(SECRET);
         return JWT.create()
             .withSubject(String.valueOf(id))
+            .withClaim("role", role.name())
+            .withIssuer("localhost")
+            .withIssuedAt(convertDateFrom(LocalDateTime.now()))
+            .withExpiresAt(convertDateFrom(LocalDateTime.now().plusDays(7)))
             .sign(algorithm);
+
     }
 
     public void validateToken(String token) {
@@ -32,7 +43,7 @@ public class JwtTokenConverter {
         }
     }
 
-    public String getSubject(String token) {
-        return JWT.decode(token).getSubject();
+    public DecodedJWT decode(String token) {
+        return JWT.decode(token);
     }
 }

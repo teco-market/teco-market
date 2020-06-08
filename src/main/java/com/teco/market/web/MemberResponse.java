@@ -1,7 +1,5 @@
 package com.teco.market.web;
 
-import org.springframework.http.ResponseEntity;
-
 import com.teco.market.domain.member.Member;
 import lombok.Builder;
 import lombok.Getter;

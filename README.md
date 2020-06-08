@@ -1,5 +1,5 @@
 ## 테코마켓
-- 우아한 테크코스 크루들을 위한 공구 및 중고 거래 장터입니다.
+⭐️ 우아한 테크코스 크루들을 위한 공구 및 중고 거래 장터입니다. ⭐️
 
 ## 주제 및 목적
 
@@ -90,22 +90,22 @@
 
 - [x] Spring rest docs 의존성 추가
 
-- [ ] 로그인 (0605-06)
+- [x] 로그인 (0605-06)
     - [ ] Github : Oauth2 -> jwt -> jwt 기준 권한 관리
     - [x] Google : Oauth2 -> jwt -> jwt 기준 권한 관리
     - [x] Jwt Converter , Bearer Intercepter 구현
         - [x] Github, Google 공통 분모를 통해서 (id + organization) 을 통한 토큰 생성
         - [x] id + organization 을 통한 jwt 토큰 분해를 통한 Intercepter, MethodArgumentResolver 구현
-    - [ ] 유저 권한 부여 (추후에)
-        - [ ] 관리자 : 전체 사이트에 대한 통계 정보를 확인할 수 있다. (관리자용 MethodArgumentResolver를 두면 될꺼같음.)
-        - [ ] 유저 : 대부분의 기능을 이용할 수 있음.
+    - [x] 유저 권한 부여 
+        - [x] 관리자 : 전체 사이트에 대한 통계 정보를 확인할 수 있다. (관리자용 MethodArgumentResolver를 두면 될꺼같음.)
+        - [x] 유저 : 대부분의 기능을 이용할 수 있음.
+        - [x] 손님 : 가입 승인이 되기전의 사용자
+        
 - [ ] LoginMember (토큰으로 로그인 한 사용자)
     - [x] read, update
     - [ ] read, update 테스트 추가
     - [ ] 권한 
     
-- [ ] Member
-
 - [ ] 상품 (0607-0608)
     - [ ] 멀티 이미지 업로드
     - [ ] 상품 crud
@@ -119,4 +119,4 @@
     - [ ] 좋아요 crud (PostId, MemberId를 기준으로)
     - [ ] 사용자 Id를 기반으로 좋아요 조회
 
-     
+- [ ] Member
