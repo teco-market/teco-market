@@ -10,8 +10,10 @@ public enum ErrorType {
     NOT_FOUND("N100", "값을 찾을 수 없습니다."),
     NOT_FOUND_MEMBER("N200", "존재하지 않는 유저입니다."),
     NOT_FOUND_GENERATION("N201", "존재하지 않는 세대입니다."),
+    NOT_FOUND_CATEGORY("N202", "존재하지 않는 카테고리입니다."),
     INVALID("I100", "유효하지 않은 값입니다."),
     INVALID_TOKEN("I101", "유효하지 않은 토큰입니다."),
+    INVALID_IMAGE("I102", "유효하지 않은 이미지입니다."),
     VALID_TOKEN_BUT_NOT_FOUND_MEMBER("I102", "토큰은 유효하나, 존재하지 않는 사용자입니다.(회원 탈퇴 한 듯?");
 
     private String code;

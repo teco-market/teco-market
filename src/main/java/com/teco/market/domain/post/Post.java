@@ -3,6 +3,7 @@ package com.teco.market.domain.post;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
@@ -19,6 +20,7 @@ import com.teco.market.domain.image.Photo;
 import com.teco.market.domain.image.Thumbnail;
 import com.teco.market.domain.member.Member;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -47,4 +49,18 @@ public class Post extends BaseEntity {
 
     @Lob
     private String content;
+
+    @Builder
+    public Post(String title, Member member, Category category, Thumbnail thumbnail, List<String> photos,
+        BigDecimal price, String content) {
+        this.title = title;
+        this.member = member;
+        //category 저장 후
+        this.category = category;
+        //thumbnail 저장 후 // 아닐수도?
+        this.thumbnail = thumbnail;
+        this.photos = photos.stream().map(Photo::new).collect(Collectors.toList());
+        this.price = price;
+        this.content = content;
+    }
 }

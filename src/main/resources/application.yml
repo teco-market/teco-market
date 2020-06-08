@@ -25,3 +25,9 @@ logging:
     org.hibernate.SQL: debug
     org.hibernate.type: trace
 
+cloud:
+  aws:
+    s3:
+      bucket: asdsa
+    region:
+      static: ap-northeast-2

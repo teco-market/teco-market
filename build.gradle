@@ -22,6 +22,7 @@ configurations {
 
 repositories {
     mavenCentral()
+    maven { url 'https://repo.spring.io/libs-milestone'}
 }
 
 dependencies {
@@ -30,6 +31,10 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'net.rakugakibox.spring.boot:logback-access-spring-boot-starter:2.7.1'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.2.6.RELEASE'
+    compile('org.springframework.cloud:spring-cloud-starter-aws')
+    compile group: 'com.twelvemonkeys.imageio', name: 'imageio', version: '3.5', ext: 'pom'
+    compile group: 'org.imgscalr', name: 'imgscalr-lib', version: '4.2'
+    compile group: 'net.coobird', name: 'thumbnailator', version: '0.4.11'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'com.auth0:java-jwt:3.10.3'
     //querydsl 추가
@@ -58,6 +63,12 @@ test {
 asciidoctor {
     inputs.dir snippetsDir
     dependsOn test
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.cloud:spring-cloud-aws:2.0.0.RC2'
+    }
 }
 
 bootJar {

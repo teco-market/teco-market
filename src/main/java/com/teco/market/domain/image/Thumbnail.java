@@ -8,7 +8,10 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 import com.teco.market.domain.post.Post;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Thumbnail {
     @Id
@@ -21,4 +24,8 @@ public class Thumbnail {
     private Post post;
     
     private String url;
+
+    public Thumbnail(String url) {
+        this.url = url;
+    }
 }

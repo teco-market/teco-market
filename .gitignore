@@ -30,3 +30,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### custom ###
+src/main/resources/aws.yml
