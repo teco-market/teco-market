@@ -10,8 +10,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.teco.market.domain.category.Category;
 import com.teco.market.domain.category.CategoryRepository;
-import com.teco.market.domain.image.S3Uploader;
+import com.teco.market.domain.image.S3UploaderService;
 import com.teco.market.domain.image.Thumbnail;
+import com.teco.market.domain.image.UploadService;
 import com.teco.market.domain.member.Member;
 import com.teco.market.domain.post.Post;
 import com.teco.market.domain.post.PostRepository;
@@ -26,7 +27,7 @@ public class PostService {
 
     private final PostRepository postRepository;
     private final CategoryRepository categoryRepository;
-    private final S3Uploader s3Uploader;
+    private final UploadService uploadService;
 
     public void save(PostRequest request, Member member) {
         Category category = categoryRepository.findById(request.getCategory())
@@ -45,12 +46,12 @@ public class PostService {
     }
 
     private Thumbnail thumbnail(MultipartFile file) {
-        return new Thumbnail(s3Uploader.uploadThumbnail(file));
+        return new Thumbnail(uploadService.uploadThumbnail(file));
     }
 
     private List<String> savePhotos(PostRequest request) {
         return request.getMultipartFiles().stream()
-            .map(s3Uploader::upload)
+            .map(uploadService::upload)
             .collect(Collectors.toList());
     }
 }
