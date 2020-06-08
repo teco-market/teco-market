@@ -23,6 +23,7 @@ import lombok.NoArgsConstructor;
 @Table(indexes = {@Index(name = "platform", columnList = "platformId, platformType")})
 public class Member extends BaseEntity {
     private String platformId;
+    @Enumerated(EnumType.STRING)
     private PlatformType platformType;
     private String name;
     private String email;

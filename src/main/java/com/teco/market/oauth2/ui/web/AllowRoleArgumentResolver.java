@@ -24,7 +24,7 @@ public class AllowRoleArgumentResolver implements HandlerMethodArgumentResolver 
 
     @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
-        NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
+        NativeWebRequest webRequest, WebDataBinderFactory binderFactory) {
         Role role = Role.valueOf((String)webRequest.getAttribute("role", SCOPE_REQUEST));
         Role[] allowedRoles = Objects.requireNonNull(parameter.getMethodAnnotation(AllowRole.class)).roles();
         for (Role allowedRole : allowedRoles) {

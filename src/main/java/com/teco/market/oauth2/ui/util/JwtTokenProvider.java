@@ -15,14 +15,14 @@ import com.teco.market.domain.member.Role;
 import com.teco.market.exception.InvalidJwtTokenException;
 
 @Component
-public class JwtTokenConverter {
+public class JwtTokenProvider {
     private static final String SECRET = "L2sAYGCBLB7YIDoLqzRd4NRZE7TWcbKKttYkHgcMZUWyUwwXf49mrzk6Wpl8XLnwt2uMpP5ukzoSWcoDJlPPMJbMzXo_ZkoevlDVcCv2M8LY9iG1xOUSXrQjkHtJXPhGqyxxZbSM9MO5p6L5-7fNUyDzsP-hRQHAmgS8Sfnq6us";
     public static final String SUB = "sub";
     public static final String PICTURE = "picture";
     public static final String TYPE = "type";
     public static final String GOOGLE = "google";
 
-    public static String create(Long id, Role role) {
+    public String create(Long id, Role role) {
         Algorithm algorithm = Algorithm.HMAC256(SECRET);
         return JWT.create()
             .withSubject(String.valueOf(id))

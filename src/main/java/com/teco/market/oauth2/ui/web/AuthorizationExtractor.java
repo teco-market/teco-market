@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Component;
 
+import com.teco.market.exception.InvalidJwtTokenException;
+
 @Component
 public class AuthorizationExtractor {
 
@@ -15,12 +17,9 @@ public class AuthorizationExtractor {
 
     public String extract(HttpServletRequest request, String authType) {
         Enumeration<String> headers = request.getHeaders(AUTHORIZATION);
-        return Optional.of(headers.nextElement())
-            .filter(value -> value.toLowerCase().startsWith(authType.toLowerCase()))
-            .map(value -> value.substring(authType.length()).trim())
-            .map(value -> {
-                int commaIndex = value.indexOf(',');
-                return commaIndex <= 0 ? value : value.substring(0, commaIndex);
-            }).orElse(Strings.EMPTY);
+        if (headers.nextElement().equals(authType)) {
+            throw new InvalidJwtTokenException();
+        }
+        return headers.nextElement();
     }
 }

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.teco.market.oauth2.ui.util.JwtTokenConverter;
+import com.teco.market.oauth2.ui.util.JwtTokenProvider;
 import com.teco.market.oauth2.ui.web.AuthorizationExtractor;
 import lombok.AllArgsConstructor;
 
@@ -16,14 +16,14 @@ import lombok.AllArgsConstructor;
 public class BearerAuthInterceptor implements HandlerInterceptor {
     public static final String AUTH_TYPE = "Bearer";
 
-    private final JwtTokenConverter jwtTokenConverter;
+    private final JwtTokenProvider jwtTokenProvider;
     private final AuthorizationExtractor authorizationExtractor;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         String token = authorizationExtractor.extract(request, AUTH_TYPE);
-        jwtTokenConverter.validateToken(token);
-        DecodedJWT decoded = jwtTokenConverter.decode(token);
+        jwtTokenProvider.validateToken(token);
+        DecodedJWT decoded = jwtTokenProvider.decode(token);
         String id = decoded.getSubject();
         String role = decoded.getClaim("role").asString();
         request.setAttribute("id", Long.parseLong(id));
