@@ -11,8 +11,11 @@ import com.teco.market.image.Photo;
 import com.teco.market.post.Post;
 import com.teco.market.web.MemberResponse;
 import lombok.Builder;
+import lombok.Getter;
 
+@Getter
 public class PostDetailResponse {
+    private Long id;
     private String title;
     private MemberResponse memberResponse;
     private List<String> images;
@@ -27,8 +30,9 @@ public class PostDetailResponse {
 
     @QueryProjection
     @Builder
-    public PostDetailResponse(String title, MemberResponse memberResponse, String category, List<String> photos,
+    public PostDetailResponse(Long id, String title, MemberResponse memberResponse, String category, List<String> photos,
         String content, List<CommentResponse> commentResponses, BigDecimal price, Long likeCount) {
+        this.id = id;
         this.title = title;
         this.memberResponse = memberResponse;
         this.category = category;
@@ -41,6 +45,7 @@ public class PostDetailResponse {
 
     public static PostDetailResponse of(Post post, Long likeCount, List<Comment> comments) {
         return PostDetailResponse.builder()
+            .id(post.getId())
             .title(post.getTitle())
             .memberResponse(MemberResponse.of(post.getMember()))
             .category(post.getCategory().getName())

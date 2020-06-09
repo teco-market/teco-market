@@ -124,6 +124,23 @@
 - [x] 패키지 구조 변경
 
 - [ ] 테스트 추가
+    - Acceptance - Layer - Unit
+        - [ ] Member
+            - [x] Acceptance
+            - [ ] Layer
+            - [ ] Unit 
+        - [ ] Post
+            - [x] Acceptance
+            - [ ] Layer
+            - [ ] Unit
+        - [ ] Comment
+            - [ ] Acceptance
+            - [ ] Layer
+            - [ ] Unit
+        - [ ] Like
+            - [ ] Acceptance
+            - [ ] Layer
+            - [ ] Unit
     - [ ] S3 없이, 임의로 데이터 삽입 후 테스트
     - [ ] S3 연동이후 임의로 추가한 데이터 변경
 

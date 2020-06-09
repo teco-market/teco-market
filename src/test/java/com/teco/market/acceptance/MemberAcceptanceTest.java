@@ -1,4 +1,4 @@
-package com.teco.market.member;
+package com.teco.market.acceptance;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.DynamicTest.*;

@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.teco.market.member.Member;
 import com.teco.market.member.Role;
+import com.teco.market.oauth2.web.interceptor.Authorized;
 import com.teco.market.post.service.PostQueryService;
 import com.teco.market.post.service.PostRequest;
 import com.teco.market.post.service.PostService;
@@ -29,6 +30,7 @@ import com.teco.market.oauth2.web.LoginMember;
 import com.teco.market.web.PostUpdateRequest;
 import com.teco.market.web.dto.PostDetailResponse;
 import com.teco.market.web.dto.PostResponse;
+import com.teco.market.web.dto.PostResponses;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -39,37 +41,37 @@ public class PostController {
     private final PostQueryService queryService;
 
     @AllowRole(roles = {Role.USER, Role.ADMIN})
-    @PostMapping
+    @PostMapping @Authorized
     public ResponseEntity<Void> create(@Valid @RequestBody PostRequest request, @LoginMember Member member) {
         postService.save(request, member);
         return status(HttpStatus.CREATED).build();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PostDetailResponse> findById(@PathVariable Long id) {
+    public ResponseEntity<PostDetailResponse> findById(@PathVariable("id") Long id) {
         PostDetailResponse postDetail = queryService.findPostDetailById(id);
         return ok(postDetail);
     }
 
     @AllowRole(roles = {Role.USER, Role.ADMIN})
-    @PutMapping("/{id}")
+    @PutMapping("/{id}") @Authorized
     public ResponseEntity<Void> update(@Valid @RequestBody PostUpdateRequest request,
-        @PathVariable Long id, @LoginMember Member member) {
+        @PathVariable("id") Long id, @LoginMember Member member) {
         postService.update(request, id, member);
         return ok().build();
     }
 
     @AllowRole(roles = {Role.USER, Role.ADMIN})
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id, @LoginMember Member member) {
+    @DeleteMapping("/{id}") @Authorized
+    public ResponseEntity<Void> delete(@PathVariable("id") Long id, @LoginMember Member member) {
         postService.deleteById(id, member);
         return noContent().build();
     }
 
     @GetMapping("/representative")
-    public ResponseEntity<List<PostResponse>> findRepresentativePosts() {
+    public ResponseEntity<PostResponses> findRepresentativePosts() {
         List<PostResponse> representativePosts = queryService.findRepresentativePosts();
-        return ok(representativePosts);
+        return ok(PostResponses.of(representativePosts));
     }
 
     @GetMapping
