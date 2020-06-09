@@ -7,9 +7,9 @@ import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.teco.market.oauth2.ui.web.AllowRoleArgumentResolver;
-import com.teco.market.oauth2.ui.web.LoginMemberArgumentResolver;
-import com.teco.market.oauth2.ui.web.interceptor.BearerAuthInterceptor;
+import com.teco.market.oauth2.web.AllowRoleArgumentResolver;
+import com.teco.market.oauth2.web.LoginMemberArgumentResolver;
+import com.teco.market.oauth2.web.interceptor.BearerAuthInterceptor;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor

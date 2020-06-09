@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.querydsl.core.annotations.QueryProjection;
-import com.teco.market.domain.comment.Comment;
-import com.teco.market.domain.comment.CommentResponse;
-import com.teco.market.domain.image.Photo;
-import com.teco.market.domain.post.Post;
+import com.teco.market.comment.Comment;
+import com.teco.market.comment.CommentResponse;
+import com.teco.market.image.Photo;
+import com.teco.market.post.Post;
 import com.teco.market.web.MemberResponse;
 import lombok.Builder;
 

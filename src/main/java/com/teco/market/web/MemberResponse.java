@@ -1,7 +1,7 @@
 package com.teco.market.web;
 
 import com.querydsl.core.annotations.QueryProjection;
-import com.teco.market.domain.member.Member;
+import com.teco.market.member.Member;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
