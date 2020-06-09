@@ -9,9 +9,11 @@ import javax.persistence.PrimaryKeyJoinColumn;
 
 import com.teco.market.domain.post.Post;
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
 @Entity
 public class Thumbnail {
     @Id

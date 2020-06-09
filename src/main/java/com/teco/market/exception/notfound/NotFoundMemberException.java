@@ -1,5 +1,6 @@
-package com.teco.market.exception;
+package com.teco.market.exception.notfound;
 
+import com.teco.market.exception.ErrorType;
 import lombok.Getter;
 
 @Getter

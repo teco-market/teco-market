@@ -1,5 +1,7 @@
-package com.teco.market.exception;
+package com.teco.market.exception.invalid;
 
+import com.teco.market.exception.BusinessException;
+import com.teco.market.exception.ErrorType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

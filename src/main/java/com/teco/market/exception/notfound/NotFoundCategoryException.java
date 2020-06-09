@@ -1,4 +1,6 @@
-package com.teco.market.exception;
+package com.teco.market.exception.notfound;
+
+import com.teco.market.exception.ErrorType;
 
 public class NotFoundCategoryException extends NotFoundException {
     public NotFoundCategoryException() {

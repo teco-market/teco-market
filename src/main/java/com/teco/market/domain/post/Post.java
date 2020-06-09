@@ -55,11 +55,16 @@ public class Post extends BaseEntity {
         BigDecimal price, String content) {
         this.title = title;
         this.member = member;
-        //category 저장 후
         this.category = category;
-        //thumbnail 저장 후 // 아닐수도?
+        // TODO: 2020/06/09 엔티티로 저장되는지, 값객체로써 처리되는지 확인해야함.
         this.thumbnail = thumbnail;
         this.photos = photos.stream().map(Photo::new).collect(Collectors.toList());
+        this.price = price;
+        this.content = content;
+    }
+
+    public void changePost(String title, BigDecimal price, String content) {
+        this.title = title;
         this.price = price;
         this.content = content;
     }

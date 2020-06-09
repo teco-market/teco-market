@@ -4,8 +4,8 @@ import org.springframework.stereotype.Service;
 
 import com.teco.market.domain.generation.Generation;
 import com.teco.market.domain.generation.GenerationRepository;
-import com.teco.market.exception.NotFoundGenerationException;
-import com.teco.market.exception.NotFoundMemberException;
+import com.teco.market.exception.notfound.NotFoundGenerationException;
+import com.teco.market.exception.notfound.NotFoundMemberException;
 import com.teco.market.web.MemberUpdateRequest;
 import lombok.AllArgsConstructor;
 

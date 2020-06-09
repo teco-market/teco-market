@@ -10,13 +10,15 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.teco.market.domain.category.Category;
 import com.teco.market.domain.category.CategoryRepository;
-import com.teco.market.domain.image.S3UploaderService;
 import com.teco.market.domain.image.Thumbnail;
 import com.teco.market.domain.image.UploadService;
+import com.teco.market.domain.like.LikeRepository;
 import com.teco.market.domain.member.Member;
 import com.teco.market.domain.post.Post;
 import com.teco.market.domain.post.PostRepository;
-import com.teco.market.exception.NotFoundCategoryException;
+import com.teco.market.exception.notfound.NotFoundCategoryException;
+import com.teco.market.exception.notfound.NotFoundPostException;
+import com.teco.market.web.PostUpdateRequest;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -53,5 +55,17 @@ public class PostService {
         return request.getMultipartFiles().stream()
             .map(uploadService::upload)
             .collect(Collectors.toList());
+    }
+
+    public void update(PostUpdateRequest request, Long id) {
+        Post findPost = postRepository.findById(id)
+            .orElseThrow(NotFoundPostException::new);
+        findPost.changePost(request.getTitle(), request.getPrice(), request.getContent());
+    }
+
+    public void deleteById(Long id) {
+        Post findPost = postRepository.findById(id)
+            .orElseThrow(NotFoundPostException::new);
+        postRepository.deleteById(findPost.getId());
     }
 }

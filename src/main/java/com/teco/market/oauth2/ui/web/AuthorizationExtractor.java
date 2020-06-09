@@ -1,14 +1,12 @@
 package com.teco.market.oauth2.ui.web;
 
 import java.util.Enumeration;
-import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Component;
 
-import com.teco.market.exception.InvalidJwtTokenException;
+import com.teco.market.exception.invalid.InvalidJwtTokenException;
 
 @Component
 public class AuthorizationExtractor {

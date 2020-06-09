@@ -1,0 +1,39 @@
+package com.teco.market.domain.post.service;
+
+import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.teco.market.domain.like.LikeRepository;
+import com.teco.market.domain.post.Post;
+import com.teco.market.domain.post.PostRepository;
+import com.teco.market.exception.notfound.NotFoundPostException;
+import com.teco.market.web.dto.PostDetailResponse;
+import com.teco.market.web.dto.PostResponse;
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
+@Transactional(readOnly = true)
+@Service
+public class PostQueryService {
+    private final PostRepository postRepository;
+    private final LikeRepository likeRepository;
+
+    public PostDetailResponse findPostDetailById(Long id) {
+        Post post = postRepository.findById(id)
+            .orElseThrow(NotFoundPostException::new);
+        Long count = likeRepository.findCountByPostId(post.getId());
+        return PostDetailResponse.of(post, count);
+    }
+
+    public List<PostResponse> findRepresentativePosts() {
+        return postRepository.findRepresentativePosts();
+    }
+
+    public Page<PostResponse> findAllWithPaging(Pageable pageable) {
+        return postRepository.findPosts(pageable);
+    }
+}

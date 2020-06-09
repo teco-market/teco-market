@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import com.teco.market.exception.BusinessException;
 import com.teco.market.exception.ErrorResponse;
 import com.teco.market.exception.ErrorType;
-import com.teco.market.exception.InvalidAuthenticationException;
-import com.teco.market.exception.InvalidException;
-import com.teco.market.exception.InvalidJwtTokenException;
-import com.teco.market.exception.NotFoundException;
-import com.teco.market.exception.NotFoundMemberException;
+import com.teco.market.exception.invalid.InvalidAuthenticationException;
+import com.teco.market.exception.invalid.InvalidException;
+import com.teco.market.exception.invalid.InvalidJwtTokenException;
+import com.teco.market.exception.notfound.NotFoundException;
+import com.teco.market.exception.notfound.NotFoundMemberException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {

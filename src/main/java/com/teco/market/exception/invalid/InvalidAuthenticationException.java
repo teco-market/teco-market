@@ -1,4 +1,6 @@
-package com.teco.market.exception;
+package com.teco.market.exception.invalid;
+
+import com.teco.market.exception.ErrorType;
 
 public class InvalidAuthenticationException extends InvalidException {
     public InvalidAuthenticationException() {

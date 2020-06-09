@@ -11,8 +11,8 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 
 import com.teco.market.domain.member.Member;
 import com.teco.market.domain.member.MemberService;
-import com.teco.market.exception.InvalidAuthenticationException;
-import com.teco.market.exception.NotFoundMemberException;
+import com.teco.market.exception.invalid.InvalidAuthenticationException;
+import com.teco.market.exception.notfound.NotFoundMemberException;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
