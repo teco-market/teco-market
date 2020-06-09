@@ -22,3 +22,12 @@ comment-member -> 2
 내가 쓴 댓글보기에서 나와야하는 항목
 
 post title, comment content;
+
+select * from category;
+select * from comment;
+select * from member;
+select * from photo;
+select * from post;
+select * from post_like;
+select * from thumbnail;
+

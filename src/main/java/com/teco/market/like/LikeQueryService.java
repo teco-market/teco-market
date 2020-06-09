@@ -10,9 +10,9 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 @Service
 public class LikeQueryService {
-    private final LikeCustomRepository likeCustomRepository;
+    private final LikeRepository likeRepository;
 
     public Page<MyLikeResponse> findMyLikes(Member member, Pageable pageable) {
-        return likeCustomRepository.findMyLikes(member, pageable);
+        return likeRepository.findMyLikes(member, pageable);
     }
 }

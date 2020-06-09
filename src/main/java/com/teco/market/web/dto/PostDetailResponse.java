@@ -27,7 +27,7 @@ public class PostDetailResponse {
 
     @QueryProjection
     @Builder
-    private PostDetailResponse(String title, MemberResponse memberResponse, String category, List<String> photos,
+    public PostDetailResponse(String title, MemberResponse memberResponse, String category, List<String> photos,
         String content, List<CommentResponse> commentResponses, BigDecimal price, Long likeCount) {
         this.title = title;
         this.memberResponse = memberResponse;

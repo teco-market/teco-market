@@ -1,6 +1,7 @@
 package com.teco.market.oauth2.web;
 
 import java.util.Enumeration;
+import java.util.Objects;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,7 +16,7 @@ public class AuthorizationExtractor {
 
     public String extract(HttpServletRequest request, String authType) {
         Enumeration<String> headers = request.getHeaders(AUTHORIZATION);
-        if (headers.nextElement().equals(authType)) {
+        if (!Objects.equals(headers.nextElement(), authType)) {
             throw new InvalidJwtTokenException();
         }
         return headers.nextElement();

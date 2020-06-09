@@ -23,5 +23,6 @@ public class MemberService {
         Generation findGeneration = generationRepository.findById(request.getGenerationId())
             .orElseThrow(NotFoundGenerationException::new);
         member.setRequiredInfo(request.getNickname(), findGeneration);
+        member.changeRole();
     }
 }

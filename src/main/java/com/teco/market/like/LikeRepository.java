@@ -12,6 +12,6 @@ public interface LikeRepository extends JpaRepository<Like, Long>, LikeCustomRep
     @Query("select count(l) from Like l where l.post.id=:id")
     Long findCountByPostId(@Param("id") Long id);
 
-    @Query("delete from Like l where l.post = Post and l.member = Member ")
+    @Query("delete from Like l where l.post =:post and l.member =:member ")
     void findByPostAndMember(@Param("post") Post post, @Param("member") Member member);
 }

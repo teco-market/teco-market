@@ -71,6 +71,8 @@ public class Post extends BaseEntity {
     }
 
     public boolean isWrittenBy(Member member) {
+        Objects.requireNonNull(this.member, "작성자가 없는 게시물입니다.");
+        Objects.requireNonNull(member, "인자로 들어온 member가 null입니다.");
         return Objects.equals(this.member.getId(), member.getId());
     }
 

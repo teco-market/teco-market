@@ -21,7 +21,7 @@ public class AuthenticationService {
 
     public String authGoogle(AuthInfoRequest authInfoRequest) {
         GoogleUserInfo googleUserInfo = googleAuthRepository.auth(authInfoRequest);
-        Member member = memberRepository.findByPlatformIdAndPlatformType(googleUserInfo.getSub(), PlatformType.GOOGLE)
+        Member member = memberRepository.findByPlatform(googleUserInfo.getSub(), PlatformType.GOOGLE)
             .orElseGet(() -> memberRepository.save(new Member(googleUserInfo.getSub(),
                     PlatformType.GOOGLE, googleUserInfo.fullName(),
                     googleUserInfo.getEmail(), Role.GUEST)));

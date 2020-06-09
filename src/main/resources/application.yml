@@ -21,8 +21,8 @@ spring:
       hibernate:
         format-sql: true
 
-logging:
-  level:
+log4j:
+  logger:
     org.hibernate.SQL: debug
     org.hibernate.type: trace
 

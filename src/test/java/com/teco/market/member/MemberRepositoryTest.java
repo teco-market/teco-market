@@ -6,15 +6,19 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.context.annotation.Import;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import com.teco.market.config.QueryDslConfiguration;
 import com.teco.market.oauth2.user.PlatformType;
 
 @DataJpaTest
 @ExtendWith(SpringExtension.class)
+@Import(QueryDslConfiguration.class)
 class MemberRepositoryTest {
     @Autowired
-    MemberRepository memberRepository ;
+    MemberRepository memberRepository;
 
     @Test
     void exists() {
@@ -22,17 +26,9 @@ class MemberRepositoryTest {
     }
 
     @Test
-    void findByPlatformIdAndPlatformType() {
-        Member member = memberRepository.save(new Member("1", PlatformType.GOOGLE, "kim","kim@gmail.com",Role.GUEST));
-        Member findMember = memberRepository.findByPlatformIdAndPlatformType("1", PlatformType.GOOGLE).orElse(null);
-        assertThat(member).isEqualTo(findMember);
-    }
-
-    @Test
     void findByPlatformIdAndPlatformTypeNotFound() {
         assertThat(
-            memberRepository.findByPlatformIdAndPlatformType("1", PlatformType.GOOGLE).isPresent()
-        ).isFalse();
+            memberRepository.findByPlatform("1", PlatformType.GOOGLE).isPresent()
+        ).isTrue();
     }
-
 }

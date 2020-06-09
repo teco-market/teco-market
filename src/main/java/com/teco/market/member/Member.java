@@ -1,5 +1,7 @@
 package com.teco.market.member;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -13,6 +15,7 @@ import com.teco.market.BaseEntity;
 import com.teco.market.generation.Generation;
 import com.teco.market.oauth2.user.PlatformType;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -36,6 +39,13 @@ public class Member extends BaseEntity {
     private Generation generation;
 
     public Member(String platformId, PlatformType platformType, String name, String email, Role role) {
+        this(null, LocalDateTime.now(), null, platformId, platformType, name, email, role);
+    }
+
+    @Builder
+    public Member(Long id, LocalDateTime createdAt, LocalDateTime updatedAt, String platformId,
+        PlatformType platformType, String name, String email, Role role) {
+        super(id, createdAt, updatedAt);
         this.platformId = platformId;
         this.platformType = platformType;
         this.name = name;
@@ -51,5 +61,9 @@ public class Member extends BaseEntity {
     private void setGeneration(Generation generation) {
         this.generation = generation;
         generation.addMember(this);
+    }
+
+    public void changeRole() {
+        this.role = Role.USER;
     }
 }

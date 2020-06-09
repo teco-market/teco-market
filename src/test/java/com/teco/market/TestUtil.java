@@ -15,12 +15,15 @@ import com.teco.market.oauth2.util.JwtTokenProvider;
 @AutoConfigureMockMvc
 @ExtendWith(SpringExtension.class)
 public class TestUtil {
+    public static final String AUTHORIZATION = "authorization";
+    public static final String TOKEN_TYPE = "Bearer";
+    public static final String SECOND_GENERATION_NAME = "utecruise";
 
     @Autowired
-    private MockMvc mockMvc;
+    protected MockMvc mockMvc;
 
     @Autowired
-    private ObjectMapper objectMapper;
+    protected ObjectMapper objectMapper;
 
     @Autowired
     private JwtTokenProvider jwtTokenProvider;

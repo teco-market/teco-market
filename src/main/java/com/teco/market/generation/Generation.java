@@ -21,6 +21,10 @@ public class Generation extends BaseEntity {
     private List<Member> members = new ArrayList<>();
     private String alias;
 
+    public Generation(String alias) {
+        this.alias = alias;
+    }
+
     public void addMember(Member member) {
         members.add(member);
     }
