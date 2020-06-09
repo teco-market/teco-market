@@ -12,6 +12,7 @@ public enum ErrorType {
     NOT_FOUND_GENERATION("N201", "존재하지 않는 세대입니다."),
     NOT_FOUND_CATEGORY("N202", "존재하지 않는 카테고리입니다."),
     NOT_FOUND_POST("N203", "존재하지 않는 포스트입니다."),
+    NOT_FOUND_COMMENT("N204", "존재하지 않는 댓글입니다."),
     INVALID("I100", "유효하지 않은 값입니다."),
     INVALID_TOKEN("I101", "유효하지 않은 토큰입니다."),
     INVALID_IMAGE("I102", "유효하지 않은 이미지입니다."),

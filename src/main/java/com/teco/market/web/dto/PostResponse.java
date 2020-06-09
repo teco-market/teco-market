@@ -3,10 +3,6 @@ package com.teco.market.web.dto;
 import java.math.BigDecimal;
 
 import com.querydsl.core.annotations.QueryProjection;
-import com.teco.market.domain.member.Member;
-import com.teco.market.domain.post.Post;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

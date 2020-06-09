@@ -7,6 +7,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.teco.market.domain.comment.Comment;
+import com.teco.market.domain.comment.CommentRepository;
 import com.teco.market.domain.like.LikeRepository;
 import com.teco.market.domain.post.Post;
 import com.teco.market.domain.post.PostRepository;
@@ -21,12 +23,14 @@ import lombok.AllArgsConstructor;
 public class PostQueryService {
     private final PostRepository postRepository;
     private final LikeRepository likeRepository;
+    private final CommentRepository commentRepository;
 
     public PostDetailResponse findPostDetailById(Long id) {
         Post post = postRepository.findById(id)
             .orElseThrow(NotFoundPostException::new);
         Long count = likeRepository.findCountByPostId(post.getId());
-        return PostDetailResponse.of(post, count);
+        List<Comment> comments = commentRepository.findByPostId(id);
+        return PostDetailResponse.of(post, count, comments);
     }
 
     public List<PostResponse> findRepresentativePosts() {

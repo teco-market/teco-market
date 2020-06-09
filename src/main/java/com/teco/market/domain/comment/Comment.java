@@ -1,5 +1,7 @@
 package com.teco.market.domain.comment;
 
+import java.util.Objects;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -12,7 +14,14 @@ import org.hibernate.annotations.OnDeleteAction;
 import com.teco.market.domain.BaseEntity;
 import com.teco.market.domain.member.Member;
 import com.teco.market.domain.post.Post;
+import javafx.geometry.Pos;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+
+@NoArgsConstructor
+@Getter
 @Entity
 public class Comment extends BaseEntity {
 
@@ -27,4 +36,23 @@ public class Comment extends BaseEntity {
     @JoinColumn(name = "post_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Post post;
+
+    @Builder
+    public Comment(String content, Member member, Post post) {
+        this.content = content;
+        this.member = member;
+        this.post = post;
+    }
+
+    public boolean isWrittenBy(Member member) {
+        return Objects.equals(this.member.getId(), member.getId());
+    }
+
+    public boolean isNotWrittenBy(Member member) {
+        return !isWrittenBy(member);
+    }
+
+    public void changeContent(String content) {
+        this.content = content;
+    }
 }
