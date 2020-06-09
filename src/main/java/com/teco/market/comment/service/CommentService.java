@@ -45,7 +45,7 @@ public class CommentService {
         commentRepository.delete(comment);
     }
 
-    private Comment findById(Long id) {
+    public Comment findById(Long id) {
         return commentRepository.findById(id)
             .orElseThrow(NotFoundCommentException::new);
     }

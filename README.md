@@ -134,7 +134,7 @@
             - [ ] Layer
             - [ ] Unit
         - [ ] Comment
-            - [ ] Acceptance
+            - [x] Acceptance
             - [ ] Layer
             - [ ] Unit
         - [ ] Like
@@ -143,6 +143,7 @@
             - [ ] Unit
     - [ ] S3 없이, 임의로 데이터 삽입 후 테스트
     - [ ] S3 연동이후 임의로 추가한 데이터 변경
+    - [ ] 테스트 코드 리팩토링
 
 - [ ] 검색 및 정렬
     - 검색

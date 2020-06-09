@@ -36,12 +36,16 @@ class PostAcceptanceTest extends TestUtil {
             dynamicTest("글이 등록되어 있다.", () -> {
                 token = userToken();
                 requestEveryPosts();
-            }), dynamicTest("특정한 글을 가져올 수 있다.", () -> {
+            }),
+            dynamicTest("특정한 글을 가져올 수 있다.", () -> {
                 postDetailResponse = requestOnePost(1L);
-            }), dynamicTest("가져온 글을 수정한다.", () -> {
+            }),
+            dynamicTest("가져온 글을 수정한다.", () -> {
                 requestUpdate(token, postDetailResponse.getId());
-            }), dynamicTest("대표 글들을 가져온다.", this::requestRepresentativePosts)
-            , dynamicTest("특정 글을 삭제할 수 있다.", () -> {
+            }),
+            dynamicTest("대표 글들을 가져온다.", this::requestRepresentativePosts)
+            ,
+            dynamicTest("특정 글을 삭제할 수 있다.", () -> {
                 requestDeletePost(postDetailResponse.getId(), token);
             })
         );

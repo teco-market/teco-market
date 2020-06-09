@@ -1,4 +1,4 @@
-package com.teco.market.oauth2.web;
+package com.teco.market.web;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +13,7 @@ import com.teco.market.exception.ErrorType;
 import com.teco.market.exception.invalid.InvalidAuthenticationException;
 import com.teco.market.exception.invalid.InvalidException;
 import com.teco.market.exception.invalid.InvalidJwtTokenException;
+import com.teco.market.exception.notfound.NotFoundCommentException;
 import com.teco.market.exception.notfound.NotFoundException;
 import com.teco.market.exception.notfound.NotFoundMemberException;
 
@@ -58,4 +59,9 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ErrorResponse.from(ErrorType.NOT_FOUND_MEMBER));
     }
 
+    @ExceptionHandler(NotFoundCommentException.class)
+    public ResponseEntity<ErrorResponse> notFoundMemberException(NotFoundCommentException e) {
+        logger.error("%s 예외가 발생하였습니다. %s", e.getCode(), e.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ErrorResponse.from(ErrorType.NOT_FOUND_COMMENT));
+    }
 }
