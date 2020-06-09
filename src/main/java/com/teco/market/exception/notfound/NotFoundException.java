@@ -8,10 +8,9 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public class NotFoundException extends BusinessException {
-    private final String code;
-    private final String message;
+    private final ErrorType errorType;
 
     public NotFoundException() {
-        this(ErrorType.NOT_FOUND.getCode(), ErrorType.NOT_FOUND.getMessage());
+        this(ErrorType.NOT_FOUND);
     }
 }

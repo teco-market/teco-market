@@ -8,10 +8,9 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class InvalidException extends BusinessException {
-    private final String code;
-    private final String message;
+    private final ErrorType errorType;
 
     public InvalidException() {
-        this(ErrorType.INVALID.getCode(), ErrorType.INVALID.getMessage());
+        this(ErrorType.INVALID);
     }
 }

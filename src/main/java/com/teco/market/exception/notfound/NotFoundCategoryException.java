@@ -4,6 +4,6 @@ import com.teco.market.exception.ErrorType;
 
 public class NotFoundCategoryException extends NotFoundException {
     public NotFoundCategoryException() {
-        super(ErrorType.NOT_FOUND_CATEGORY.getCode(), ErrorType.NOT_FOUND_CATEGORY.getMessage());
+        super(ErrorType.NOT_FOUND_CATEGORY);
     }
 }

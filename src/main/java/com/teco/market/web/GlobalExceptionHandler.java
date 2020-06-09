@@ -24,44 +24,19 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(BusinessException.class)
     public ResponseEntity<ErrorResponse> businessException(BusinessException e) {
-        logger.error("%s 예외가 발생하였습니다. %s", e.getCode(), e.getMessage());
-        return ResponseEntity.status(HttpStatus.CONFLICT).body(ErrorResponse.from(ErrorType.BUSINESS));
+        logger.error("%s 예외가 발생하였습니다. %s", e.getErrorType().getCode(), e.getErrorType().getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(ErrorResponse.from(e.getErrorType()));
     }
 
     @ExceptionHandler(InvalidException.class)
     public ResponseEntity<ErrorResponse> invalidException(InvalidException e) {
-        logger.error("%s 예외가 발생하였습니다. %s", e.getCode(), e.getMessage());
-        return ResponseEntity.status(HttpStatus.CONFLICT).body(ErrorResponse.from(ErrorType.INVALID));
+        logger.error("%s 예외가 발생하였습니다. %s", e.getErrorType().getCode(), e.getErrorType().getMessage());
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ErrorResponse.from(e.getErrorType()));
     }
 
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<ErrorResponse> notFoundException(NotFoundException e) {
-        logger.error("%s 예외가 발생하였습니다. %s", e.getCode(), e.getMessage());
-        return ResponseEntity.status(HttpStatus.CONFLICT).body(ErrorResponse.from(ErrorType.NOT_FOUND));
-    }
-
-    @ExceptionHandler(InvalidAuthenticationException.class)
-    public ResponseEntity<ErrorResponse> invalidAuthenticationException(InvalidAuthenticationException e) {
-        logger.error("%s 예외가 발생하였습니다. %s", e.getCode(), e.getMessage());
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-            .body(ErrorResponse.from(ErrorType.VALID_TOKEN_BUT_NOT_FOUND_MEMBER));
-    }
-
-    @ExceptionHandler(InvalidJwtTokenException.class)
-    public ResponseEntity<ErrorResponse> invalidJwtTokenException(InvalidJwtTokenException e) {
-        logger.error("%s 예외가 발생하였습니다. %s", e.getCode(), e.getMessage());
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ErrorResponse.from(ErrorType.INVALID_TOKEN));
-    }
-
-    @ExceptionHandler(NotFoundMemberException.class)
-    public ResponseEntity<ErrorResponse> notFoundMemberException(NotFoundMemberException e) {
-        logger.error("%s 예외가 발생하였습니다. %s", e.getCode(), e.getMessage());
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ErrorResponse.from(ErrorType.NOT_FOUND_MEMBER));
-    }
-
-    @ExceptionHandler(NotFoundCommentException.class)
-    public ResponseEntity<ErrorResponse> notFoundMemberException(NotFoundCommentException e) {
-        logger.error("%s 예외가 발생하였습니다. %s", e.getCode(), e.getMessage());
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ErrorResponse.from(ErrorType.NOT_FOUND_COMMENT));
+        logger.error("%s 예외가 발생하였습니다. %s", e.getErrorType().getCode(), e.getErrorType().getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ErrorResponse.from(e.getErrorType()));
     }
 }
