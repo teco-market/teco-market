@@ -3,6 +3,7 @@ package com.teco.market.domain.post;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import javax.persistence.CollectionTable;
@@ -67,5 +68,13 @@ public class Post extends BaseEntity {
         this.title = title;
         this.price = price;
         this.content = content;
+    }
+
+    public boolean isWrittenBy(Member member) {
+        return Objects.equals(this.member.getId(), member.getId());
+    }
+
+    public boolean isNotWrittenBy(Member member) {
+        return !isWrittenBy(member);
     }
 }

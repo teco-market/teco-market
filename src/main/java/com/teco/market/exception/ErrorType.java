@@ -15,7 +15,8 @@ public enum ErrorType {
     INVALID("I100", "유효하지 않은 값입니다."),
     INVALID_TOKEN("I101", "유효하지 않은 토큰입니다."),
     INVALID_IMAGE("I102", "유효하지 않은 이미지입니다."),
-    VALID_TOKEN_BUT_NOT_FOUND_MEMBER("I102", "토큰은 유효하나, 존재하지 않는 사용자입니다.(회원 탈퇴 한 듯?");
+    INVALID_WRITER("I104", "글 작성자가 아닙니다."),
+    VALID_TOKEN_BUT_NOT_FOUND_MEMBER("I103", "토큰은 유효하나, 존재하지 않는 사용자입니다.(회원 탈퇴 한 듯?");
 
     private String code;
     private String message;

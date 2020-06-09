@@ -16,6 +16,7 @@ import com.teco.market.domain.like.LikeRepository;
 import com.teco.market.domain.member.Member;
 import com.teco.market.domain.post.Post;
 import com.teco.market.domain.post.PostRepository;
+import com.teco.market.exception.InvalidWriterException;
 import com.teco.market.exception.notfound.NotFoundCategoryException;
 import com.teco.market.exception.notfound.NotFoundPostException;
 import com.teco.market.web.PostUpdateRequest;
@@ -57,15 +58,23 @@ public class PostService {
             .collect(Collectors.toList());
     }
 
-    public void update(PostUpdateRequest request, Long id) {
-        Post findPost = postRepository.findById(id)
+    public void update(PostUpdateRequest request, Long postId, Member member) {
+        Post findPost = postRepository.findById(postId)
             .orElseThrow(NotFoundPostException::new);
+        validateWriter(member, findPost);
         findPost.changePost(request.getTitle(), request.getPrice(), request.getContent());
     }
 
-    public void deleteById(Long id) {
-        Post findPost = postRepository.findById(id)
+    public void deleteById(Long postId, Member member) {
+        Post findPost = postRepository.findById(postId)
             .orElseThrow(NotFoundPostException::new);
+        validateWriter(member, findPost);
         postRepository.deleteById(findPost.getId());
+    }
+
+    private void validateWriter(Member member, Post findPost) {
+        if (findPost.isNotWrittenBy(member)) {
+            throw new InvalidWriterException();
+        }
     }
 }

@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.teco.market.domain.member.Member;
 import com.teco.market.domain.member.Role;
-import com.teco.market.domain.post.Post;
 import com.teco.market.domain.post.service.PostQueryService;
 import com.teco.market.domain.post.service.PostRequest;
 import com.teco.market.domain.post.service.PostService;
@@ -30,7 +29,6 @@ import com.teco.market.oauth2.ui.web.LoginMember;
 import com.teco.market.web.dto.PostDetailResponse;
 import com.teco.market.web.dto.PostResponse;
 import lombok.AllArgsConstructor;
-import lombok.Value;
 
 @AllArgsConstructor
 @RestController
@@ -52,15 +50,18 @@ public class PostController {
         return ok(postDetail);
     }
 
+    @AllowRole(roles = {Role.USER, Role.ADMIN})
     @PutMapping("/{id}")
-    public ResponseEntity<Void> update(@Valid @RequestBody PostUpdateRequest request, @PathVariable Long id) {
-        postService.update(request, id);
+    public ResponseEntity<Void> update(@Valid @RequestBody PostUpdateRequest request,
+        @PathVariable Long id, @LoginMember Member member) {
+        postService.update(request, id, member);
         return ok().build();
     }
 
+    @AllowRole(roles = {Role.USER, Role.ADMIN})
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
-        postService.deleteById(id);
+    public ResponseEntity<Void> delete(@PathVariable Long id, @LoginMember Member member) {
+        postService.deleteById(id, member);
         return noContent().build();
     }
 
@@ -74,6 +75,5 @@ public class PostController {
     public ResponseEntity<Page<PostResponse>> findAll(Pageable pageable) {
         Page<PostResponse> posts = queryService.findAllWithPaging(pageable);
         return ok(posts);
-
     }
 }
