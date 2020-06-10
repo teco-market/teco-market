@@ -14,7 +14,7 @@ import org.springframework.data.repository.support.PageableExecutionUtils;
 import com.querydsl.core.QueryResults;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.teco.market.post.web.PostResponse;
-import com.teco.market.web.dto.QPostResponse;
+import com.teco.market.post.web.QPostResponse;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
