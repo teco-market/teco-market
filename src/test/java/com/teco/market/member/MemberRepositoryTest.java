@@ -7,10 +7,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.teco.market.config.QueryDslConfiguration;
+import com.teco.market.common.config.QueryDslConfiguration;
 import com.teco.market.oauth2.user.PlatformType;
 
 @DataJpaTest

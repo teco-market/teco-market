@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.teco.market.comment.Comment;
-import com.teco.market.comment.CommentRepository;
-import com.teco.market.like.LikeRepository;
+import com.teco.market.comment.repository.CommentRepository;
+import com.teco.market.like.repository.LikeRepository;
 import com.teco.market.post.Post;
-import com.teco.market.post.PostRepository;
-import com.teco.market.exception.notfound.NotFoundPostException;
-import com.teco.market.web.dto.PostDetailResponse;
-import com.teco.market.web.dto.PostResponse;
+import com.teco.market.post.repository.PostRepository;
+import com.teco.market.common.exception.notfound.NotFoundPostException;
+import com.teco.market.post.web.PostDetailResponse;
+import com.teco.market.post.web.PostResponse;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor

@@ -14,8 +14,8 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.teco.market.TestUtil;
-import com.teco.market.web.MemberResponse;
-import com.teco.market.web.MemberUpdateRequest;
+import com.teco.market.member.web.MemberResponse;
+import com.teco.market.member.web.MemberUpdateRequest;
 
 @Transactional
 class MemberAcceptanceTest extends TestUtil {

@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.teco.market.TestUtil;
-import com.teco.market.like.MyLikeResponse;
+import com.teco.market.like.web.MyLikeResponse;
 import com.teco.market.web.CustomPage;
 
 

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import com.teco.market.member.Member;
 import com.teco.market.member.MemberRepository;
 import com.teco.market.member.Role;
-import com.teco.market.oauth2.AuthInfoRequest;
+import com.teco.market.oauth2.util.AuthInfoRequest;
 import com.teco.market.oauth2.repository.GoogleAuthRepository;
 import com.teco.market.oauth2.user.GoogleUserInfo;
 import com.teco.market.oauth2.user.PlatformType;

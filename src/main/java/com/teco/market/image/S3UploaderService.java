@@ -15,8 +15,8 @@ import net.coobird.thumbnailator.name.Rename;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.teco.market.exception.ErrorType;
-import com.teco.market.exception.invalid.InvalidMultiFileException;
+import com.teco.market.common.exception.ErrorType;
+import com.teco.market.common.exception.invalid.InvalidMultiFileException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 

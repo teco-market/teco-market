@@ -18,10 +18,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.teco.market.TestUtil;
 import com.teco.market.web.CustomPage;
-import com.teco.market.web.PostUpdateRequest;
-import com.teco.market.web.dto.PostDetailResponse;
-import com.teco.market.web.dto.PostResponse;
-import com.teco.market.web.dto.PostResponses;
+import com.teco.market.post.web.PostUpdateRequest;
+import com.teco.market.post.web.PostDetailResponse;
+import com.teco.market.post.web.PostResponse;
+import com.teco.market.post.web.PostResponses;
 
 @Transactional
 class PostAcceptanceTest extends TestUtil {

@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
-import com.teco.market.oauth2.Oauth2GoogleUriBuilder;
+import com.teco.market.oauth2.util.Oauth2GoogleUriBuilder;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

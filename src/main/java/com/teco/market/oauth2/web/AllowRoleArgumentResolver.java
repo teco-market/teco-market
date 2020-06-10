@@ -12,7 +12,7 @@ import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
 import com.teco.market.member.Role;
-import com.teco.market.exception.invalid.InvalidAuthenticationException;
+import com.teco.market.common.exception.invalid.InvalidAuthenticationException;
 
 @Component
 public class AllowRoleArgumentResolver implements HandlerMethodArgumentResolver {

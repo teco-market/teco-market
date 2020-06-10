@@ -14,11 +14,12 @@ import com.teco.market.image.Thumbnail;
 import com.teco.market.image.UploadService;
 import com.teco.market.member.Member;
 import com.teco.market.post.Post;
-import com.teco.market.post.PostRepository;
-import com.teco.market.exception.invalid.InvalidWriterException;
-import com.teco.market.exception.notfound.NotFoundCategoryException;
-import com.teco.market.exception.notfound.NotFoundPostException;
-import com.teco.market.web.PostUpdateRequest;
+import com.teco.market.post.repository.PostRepository;
+import com.teco.market.common.exception.invalid.InvalidWriterException;
+import com.teco.market.common.exception.notfound.NotFoundCategoryException;
+import com.teco.market.common.exception.notfound.NotFoundPostException;
+import com.teco.market.post.web.PostRequest;
+import com.teco.market.post.web.PostUpdateRequest;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor

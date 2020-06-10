@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Component;
 
-import com.teco.market.exception.invalid.InvalidJwtTokenException;
+import com.teco.market.common.exception.invalid.InvalidJwtTokenException;
 
 @Component
 public class AuthorizationExtractor {

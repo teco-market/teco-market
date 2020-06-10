@@ -13,6 +13,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.teco.market.TestUtil;
 import com.teco.market.member.MemberService;
+import com.teco.market.member.web.MemberUpdateRequest;
 
 class MemberControllerTest extends TestUtil {
 
