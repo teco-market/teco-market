@@ -10,7 +10,7 @@ import org.springframework.data.repository.support.PageableExecutionUtils;
 import com.querydsl.core.QueryResults;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.teco.market.like.web.MyLikeResponse;
-import com.teco.market.like.QMyLikeResponse;
+import com.teco.market.like.web.QMyLikeResponse;
 import com.teco.market.member.Member;
 import lombok.AllArgsConstructor;
 

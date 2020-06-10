@@ -11,7 +11,7 @@ import org.springframework.data.repository.support.PageableExecutionUtils;
 import com.querydsl.core.QueryResults;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.teco.market.comment.web.MyCommentResponse;
-import com.teco.market.comment.QMyCommentResponse;
+import com.teco.market.comment.web.QMyCommentResponse;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
