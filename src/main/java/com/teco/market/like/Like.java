@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "post_like")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Like extends BaseEntity { ;
+public class Like extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id")

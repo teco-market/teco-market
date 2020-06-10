@@ -6,7 +6,6 @@ import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuild
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.DynamicTest;
@@ -18,7 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.teco.market.TestUtil;
-import com.teco.market.exception.notfound.NotFoundPostException;
 import com.teco.market.web.CustomPage;
 import com.teco.market.web.PostUpdateRequest;
 import com.teco.market.web.dto.PostDetailResponse;

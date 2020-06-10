@@ -29,7 +29,7 @@ public class LikeService {
     public void minus(Long id, Member member) {
         Post post = postRepository.findById(id)
             .orElseThrow(NotFoundPostException::new);
-        likeRepository.findByPostAndMember(post, member);
+        likeRepository.deleteByPostAndMember(post, member);
     }
 
     public Long findLikeCount(Long id) {

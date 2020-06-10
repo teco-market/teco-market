@@ -21,8 +21,7 @@ public class LikeCustomRepositoryImpl implements LikeCustomRepository {
         QueryResults<MyLikeResponse> results = queryFactory.select(new QMyLikeResponse(
             post.id.as("postId"),
             post.title.as("postTitle"),
-            post.price.as("postPrice"),
-            like.count()
+            post.price.as("postPrice")
         ))
             .from(like)
             .leftJoin(like.post, post)

@@ -18,6 +18,7 @@ import com.teco.market.like.LikeService;
 import com.teco.market.like.MyLikeResponse;
 import com.teco.market.member.Member;
 import com.teco.market.oauth2.web.LoginMember;
+import com.teco.market.oauth2.web.interceptor.Authorized;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -26,25 +27,28 @@ public class LikeController {
     private final LikeService likeService;
     private final LikeQueryService likeQueryService;
 
-    @PostMapping("/post/{id}/like")
+    @Authorized
+    @PostMapping("/posts/{id}/likes")
     public ResponseEntity<Void> create(@PathVariable("id") Long id, @LoginMember Member member) {
         likeService.plus(id, member);
         return status(HttpStatus.CREATED).build();
     }
 
-    @DeleteMapping("/post/{id}/like")
+    @Authorized
+    @DeleteMapping("/posts/{id}/likes")
     public ResponseEntity<Void> delete(@PathVariable("id") Long id, @LoginMember Member member) {
         likeService.minus(id, member);
         return noContent().build();
     }
 
-    @GetMapping("/post/{id}")
+    @GetMapping("/posts/{id}/likes")
     public ResponseEntity<LikeResponse> findCount(@PathVariable("id") Long id) {
         Long count = likeService.findLikeCount(id);
         return ok(LikeResponse.of(count));
     }
 
-    @GetMapping("/me/like")
+    @Authorized
+    @GetMapping("/me/likes")
     public ResponseEntity<Page<MyLikeResponse>> findMyLikes(@LoginMember Member member, Pageable pageable) {
         Page<MyLikeResponse> myLikes = likeQueryService.findMyLikes(member, pageable);
         return ok(myLikes);
