@@ -21,7 +21,7 @@ public class SearchRepository {
     private final JPAQueryFactory jpaQueryFactory;
 
     public Page<PostResponse> search(SearchCondition searchCondition, Pageable pageable) {
-
+        OrderConditions orderConditions = new OrderConditions(searchCondition);
         QueryResults<PostResponse> result = jpaQueryFactory.select(new QPostResponse(
             post.thumbnail.url.as("thumbnail"),
             post.title.as("title"),
@@ -34,7 +34,7 @@ public class SearchRepository {
             .where(categoryEq(searchCondition.getCategoryId()),
                 keywordEq(searchCondition.getKeyword()),
                 authorEq(searchCondition.getAuthor())
-            ).orderBy(new OrderConditions(searchCondition).getConditions())
+            ).orderBy(orderConditions.get())
             .offset(pageable.getOffset())
             .limit(pageable.getPageSize())
             .fetchResults();
@@ -53,5 +53,4 @@ public class SearchRepository {
     private BooleanExpression categoryEq(Long categoryId) {
         return isEmpty(categoryId) ? null : post.category.id.eq(categoryId);
     }
-
 }

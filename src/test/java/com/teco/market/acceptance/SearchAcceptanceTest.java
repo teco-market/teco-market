@@ -13,10 +13,9 @@ public class SearchAcceptanceTest extends TestUtil {
     @Test
     void selectByRecent() throws Exception {
         super.mockMvc.perform(get("/search")
-            .param("byPriceAsc", "true")
+            .param("byPriceDesc", "true")
         )
             .andExpect(status().isOk())
             .andDo(print());
     }
-
 }
