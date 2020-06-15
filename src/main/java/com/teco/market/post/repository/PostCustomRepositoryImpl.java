@@ -19,6 +19,7 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class PostCustomRepositoryImpl implements PostCustomRepository {
+    private static final int REPRESENTATIVE_COUNT = 15;
     private final JPAQueryFactory queryFactory;
 
     @Override
@@ -35,7 +36,7 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
             .leftJoin(post.thumbnail, thumbnail)
             .leftJoin(post.category, category)
             .leftJoin(post.member, member)
-            .limit(15)
+            .limit(REPRESENTATIVE_COUNT)
             .fetch();
     }
 

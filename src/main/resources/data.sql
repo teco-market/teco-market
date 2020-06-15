@@ -11,9 +11,9 @@ insert into member(id, created_at, updated_at, platform_id, platform_type, name,
 values (2,null,null,'2','GOOGLE','kim','si@young','USER','jungjum',1);
 
 insert into post(id, created_at, updated_at, content, price, title, category_id, member_id)
-values (1, null,null, 'first post', 20000, 'It is first post', 1, 2);
+values (1, '2020-01-01',null, 'first post', 20000, 'It is first post', 1, 2);
 insert into post(id, created_at, updated_at, content, price, title, category_id, member_id)
-values (2, null,null, 'second post', 10000, 'It is second post', 2, 2);
+values (2, '2020-05-05',null, 'second post', 10000, 'It is second post', 2, 2);
 
 insert into photo(post_id, url) values (1, 'post1-image1-url');
 insert into photo(post_id, url) values (1, 'post2-image2-url');

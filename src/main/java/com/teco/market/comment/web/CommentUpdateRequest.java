@@ -1,4 +1,4 @@
-package com.teco.market.comment.service;
+package com.teco.market.comment.web;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

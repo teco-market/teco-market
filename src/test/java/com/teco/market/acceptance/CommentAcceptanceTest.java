@@ -18,7 +18,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.teco.market.TestUtil;
 import com.teco.market.comment.web.CommentResponse;
 import com.teco.market.comment.web.MyCommentResponse;
-import com.teco.market.comment.service.CommentUpdateRequest;
+import com.teco.market.comment.web.CommentUpdateRequest;
 import com.teco.market.web.CustomPage;
 import com.teco.market.comment.web.CommentRequest;
 import com.teco.market.post.web.PostDetailResponse;

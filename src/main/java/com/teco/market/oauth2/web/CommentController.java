@@ -21,7 +21,7 @@ import com.teco.market.comment.web.CommentResponse;
 import com.teco.market.comment.web.MyCommentResponse;
 import com.teco.market.comment.service.CommentQueryService;
 import com.teco.market.comment.service.CommentService;
-import com.teco.market.comment.service.CommentUpdateRequest;
+import com.teco.market.comment.web.CommentUpdateRequest;
 import com.teco.market.member.Member;
 import com.teco.market.oauth2.web.interceptor.Authorized;
 import com.teco.market.comment.web.CommentRequest;

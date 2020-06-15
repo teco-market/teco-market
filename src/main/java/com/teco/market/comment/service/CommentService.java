@@ -3,15 +3,16 @@ package com.teco.market.comment.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.teco.market.comment.repository.CommentRepository;
 import com.teco.market.comment.Comment;
-import com.teco.market.member.Member;
-import com.teco.market.post.Post;
-import com.teco.market.post.repository.PostRepository;
+import com.teco.market.comment.repository.CommentRepository;
+import com.teco.market.comment.web.CommentRequest;
+import com.teco.market.comment.web.CommentUpdateRequest;
 import com.teco.market.common.exception.invalid.InvalidWriterException;
 import com.teco.market.common.exception.notfound.NotFoundCommentException;
 import com.teco.market.common.exception.notfound.NotFoundPostException;
-import com.teco.market.comment.web.CommentRequest;
+import com.teco.market.member.Member;
+import com.teco.market.post.Post;
+import com.teco.market.post.repository.PostRepository;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
