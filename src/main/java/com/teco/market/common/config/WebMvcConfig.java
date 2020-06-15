@@ -29,4 +29,5 @@ public class WebMvcConfig implements WebMvcConfigurer {
         resolvers.add(loginMemberArgumentResolver);
         resolvers.add(allowRoleArgumentResolver);
     }
+
 }

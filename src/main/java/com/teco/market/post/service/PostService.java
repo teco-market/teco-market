@@ -32,7 +32,7 @@ public class PostService {
     private final CategoryRepository categoryRepository;
     private final UploadService uploadService;
 
-    public void save(PostRequest request, Member member) {
+    public void save(PostRequest request, List<MultipartFile> files, Member member) {
         Category category = categoryRepository.findById(request.getCategory())
             .orElseThrow(NotFoundCategoryException::new);
 
@@ -42,8 +42,8 @@ public class PostService {
             .price(BigDecimal.valueOf(request.getPrice()))
             .category(category)
             .content(request.getContent())
-            .photos(savePhotos(request))
-            .thumbnail(thumbnail(request.getMultipartFiles().get(FIRST_PHOTO)))
+            .photos(savePhotos(files))
+            .thumbnail(thumbnail(files.get(FIRST_PHOTO)))
             .build();
         postRepository.save(post);
     }
@@ -52,8 +52,8 @@ public class PostService {
         return new Thumbnail(uploadService.uploadThumbnail(file));
     }
 
-    private List<String> savePhotos(PostRequest request) {
-        return request.getMultipartFiles().stream()
+    private List<String> savePhotos(List<MultipartFile> files) {
+        return files.stream()
             .map(uploadService::upload)
             .collect(Collectors.toList());
     }

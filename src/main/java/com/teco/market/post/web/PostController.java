@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.teco.market.member.Member;
 import com.teco.market.member.Role;
@@ -37,8 +39,8 @@ public class PostController {
 
     @AllowRole(roles = {Role.USER, Role.ADMIN})
     @PostMapping @Authorized
-    public ResponseEntity<Void> create(@Valid @RequestBody PostRequest request, @LoginMember Member member) {
-        postService.save(request, member);
+    public ResponseEntity<Void> create(@Valid @RequestBody PostRequest request,@RequestParam("data") List<MultipartFile> files, @LoginMember Member member) {
+        postService.save(request, files, member);
         return status(HttpStatus.CREATED).build();
     }
 

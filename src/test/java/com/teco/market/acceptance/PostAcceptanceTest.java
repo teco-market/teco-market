@@ -2,31 +2,56 @@ package com.teco.market.acceptance;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.DynamicTest.*;
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.math.BigDecimal;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.DynamicTest;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.teco.market.TestUtil;
-import com.teco.market.web.CustomPage;
-import com.teco.market.post.web.PostUpdateRequest;
 import com.teco.market.post.web.PostDetailResponse;
+import com.teco.market.post.web.PostRequest;
 import com.teco.market.post.web.PostResponse;
 import com.teco.market.post.web.PostResponses;
+import com.teco.market.post.web.PostUpdateRequest;
+import com.teco.market.web.CustomPage;
 
 @Transactional
 class PostAcceptanceTest extends TestUtil {
     private String token;
     private PostDetailResponse postDetailResponse;
+
+    @Test
+    void imageUploadTest() throws Exception {
+        String token = userToken();
+        File target = new File("/Users/kimsiyoung/IdeaProjects/market/git_commit2.png");
+        FileInputStream fileInputStream = new FileInputStream(target);
+        MockMultipartFile file = new MockMultipartFile("data", "git_commit2.png", MediaType.IMAGE_PNG_VALUE, fileInputStream);
+        PostRequest request = new PostRequest("TEST", 1L, 1000, "TEST_CONTENT");
+
+        super.mockMvc.perform(multipart("/posts")
+            .file(file)
+            .content(super.objectMapper.writeValueAsString(request))
+            .contentType(MediaType.APPLICATION_JSON_VALUE)
+            .header(AUTHORIZATION, TOKEN_TYPE, token)
+        )
+            .andExpect(status().isCreated())
+            .andDo(print());
+    }
 
     @TestFactory
     Stream<DynamicTest> managePost() {

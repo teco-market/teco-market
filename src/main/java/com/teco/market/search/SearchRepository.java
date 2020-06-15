@@ -5,6 +5,7 @@ import static org.springframework.util.StringUtils.*;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.support.PageableExecutionUtils;
 import org.springframework.stereotype.Repository;
 
@@ -22,6 +23,7 @@ public class SearchRepository {
 
     public Page<PostResponse> search(SearchCondition searchCondition, Pageable pageable) {
         OrderConditions orderConditions = new OrderConditions(searchCondition);
+
         QueryResults<PostResponse> result = jpaQueryFactory.select(new QPostResponse(
             post.thumbnail.url.as("thumbnail"),
             post.title.as("title"),
