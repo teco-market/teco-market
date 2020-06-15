@@ -17,7 +17,6 @@ import org.junit.jupiter.api.TestFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockMultipartFile;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,9 +37,9 @@ class PostAcceptanceTest extends TestUtil {
     @Test
     void imageUploadTest() throws Exception {
         String token = userToken();
-        File target = new File("/Users/kimsiyoung/IdeaProjects/market/git_commit2.png");
+        File target = new File("/Users/kimsiyoung/IdeaProjects/market/git_commit1.png");
         FileInputStream fileInputStream = new FileInputStream(target);
-        MockMultipartFile file = new MockMultipartFile("data", "git_commit2.png", MediaType.IMAGE_PNG_VALUE, fileInputStream);
+        MockMultipartFile file = new MockMultipartFile("data", "git_commit1.png", MediaType.IMAGE_PNG_VALUE, fileInputStream);
         PostRequest request = new PostRequest("TEST", 1L, 1000, "TEST_CONTENT");
 
         super.mockMvc.perform(multipart("/posts")

@@ -29,6 +29,6 @@ log4j:
 cloud:
   aws:
     s3:
-      bucket: asdsa
+      bucket: market-photos
     region:
       static: ap-northeast-2
