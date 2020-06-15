@@ -4,7 +4,7 @@ import lombok.Getter;
 
 @Getter
 public enum Channel {
-    INCOMING("https://hooks.slack.com/services/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","incoming");
+    INCOMING("https://hooks.slack.com/services/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", "프로젝트");
 
     private final String url;
     private final String channel;

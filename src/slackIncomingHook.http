@@ -1,0 +1,11 @@
+
+
+POST https://hooks.slack.com/services/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
+Content-Type: application/json
+
+{
+  "text": "슬랙봇 연동",
+  "channel": "프로젝트"
+}
+###
+

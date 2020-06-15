@@ -48,6 +48,11 @@ public class PostService {
         postRepository.save(post);
     }
 
+    public Post findById(Long id) {
+        return postRepository.findById(id)
+            .orElseThrow(NotFoundPostException::new);
+    }
+
     private Thumbnail thumbnail(MultipartFile file) {
         return new Thumbnail(uploadService.uploadThumbnail(file));
     }
