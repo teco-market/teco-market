@@ -79,7 +79,7 @@ class PostAcceptanceTest extends TestUtil {
             .andReturn();
         PostResponses result = super.objectMapper.readValue(mvcResult.getResponse().getContentAsString(),
             PostResponses.class);
-        assertThat(result.getResponses()).hasSize(2);
+        assertThat(result.getResponses()).hasSize(3);
     }
 
     private void requestEveryPosts() throws Exception {
@@ -93,7 +93,7 @@ class PostAcceptanceTest extends TestUtil {
         Page<PostResponse> response = super.objectMapper.readValue(
             contentAsString, new TypeReference<CustomPage<PostResponse>>() {
             });
-        assertThat(response.getContent()).hasSize(2);
+        assertThat(response.getContent()).hasSize(3);
     }
 
     private PostDetailResponse requestOnePost(Long id) throws Exception {
