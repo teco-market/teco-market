@@ -8,20 +8,18 @@ import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 
 import com.teco.market.TestUtil;
+import com.teco.market.slack.notify.SlackMessageRequest;
 
 class SlackControllerTest extends TestUtil {
     @Test
     void notifyAlarm() throws Exception {
-        SlackMessageAttachment message = SlackMessageAttachment.builder()
-            .color("RED")
-            .pretext("디디 븅슨")
-            .title("우리팀!")
-            .titleLink("https://www.google.com")
-            .text("잘해보자!!")
-            .build();
+        String token = kyleToken();
+        SlackMessageRequest request = new SlackMessageRequest(4L, 3L);
+
         super.mockMvc.perform(post("/notify")
             .contentType(MediaType.APPLICATION_JSON_VALUE)
-            .content(super.objectMapper.writeValueAsString(message))
+            .content(super.objectMapper.writeValueAsString(request))
+            .header(AUTHORIZATION, TOKEN_TYPE, token)
         )
             .andExpect(status().isOk())
             .andDo(print());

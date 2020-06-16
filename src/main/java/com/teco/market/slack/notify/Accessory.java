@@ -8,14 +8,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Accessory {
     private static final String IMAGE = "image";
+
     private String type;
-    private String imageUrl;
-    private String altText;
+    private String image_url;
+    private String alt_text;
 
     private Accessory(Post post) {
         this.type = IMAGE;
-        this.imageUrl = post.getThumbnail().getUrl();
-        this.altText = post.getTitle();
+        this.image_url = post.getThumbnail().getUrl();
+        this.alt_text = post.getTitle();
     }
 
     public static Accessory create(Post post) {

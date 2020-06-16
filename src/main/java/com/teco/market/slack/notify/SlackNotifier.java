@@ -1,8 +1,11 @@
 package com.teco.market.slack.notify;
 
+import java.util.Arrays;
+
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -21,18 +24,20 @@ public class SlackNotifier {
     private final ObjectMapper objectMapper;
 
     public void notify(Channel channel, Member sender, Member receiver, Post post) {
-        Sections sections = new Sections();
-        sections.addMessage(sender, receiver, post);
-        sections.addImage(post);
-        send(channel.getUrl(), new SlackMessage(channel.getChannel(), sections));
+        SlackMessage slackMessage = new SlackMessage(channel.getChannel());
+        slackMessage.addMessage(sender, receiver, post);
+
+        send(channel.getUrl(), slackMessage);
     }
 
-    public void send(String url, SlackMessage message) {
+    private void send(String url, SlackMessage message) {
         try {
             HttpHeaders httpHeaders = new HttpHeaders();
-            httpHeaders.set("Content-Type", MediaType.APPLICATION_JSON_VALUE);
+            httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+            httpHeaders.setAccept(Arrays.asList(MediaType.APPLICATION_JSON_UTF8));
             String request = objectMapper.writeValueAsString(message);
             HttpEntity<String> entity = new HttpEntity<>(request, httpHeaders);
+
             restTemplate.postForEntity(url, entity, String.class);
         } catch (Exception e) {
             throw new InvalidSlackMessageException();

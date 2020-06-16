@@ -10,12 +10,18 @@ import lombok.NoArgsConstructor;
 public class Text {
     private static final String MARK_DOWN = "mrkdwn";
     private static final String IMAGE = "image";
+
     private String type;
     private String text;
 
     public Text(Member sender, Member receiver, Post post) {
         this.type = MARK_DOWN;
         this.text = createMessage(sender, receiver, post);
+    }
+
+    public Text(String text) {
+        this.type = MARK_DOWN;
+        this.text = text;
     }
 
     private String createMessage(Member sender, Member receiver, Post post) {

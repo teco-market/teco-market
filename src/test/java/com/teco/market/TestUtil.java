@@ -35,4 +35,8 @@ public class TestUtil {
     protected String userToken() {
         return jwtTokenProvider.create(2L, Role.USER);
     }
+
+    protected String kyleToken() {
+        return jwtTokenProvider.create(3L, Role.USER);
+    }
 }

@@ -4,8 +4,29 @@ POST https://hooks.slack.com/services/TFELTJB7V/B015LBB1DD2/Cf223CzWhgBWAR0kT3fp
 Content-Type: application/json
 
 {
-  "text": "슬랙봇 연동",
-  "channel": "프로젝트"
+  "channel": "프로젝트",
+  "blocks": [
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "⭐️관심 요청⭐️️"
+      }
+    },
+    {
+      "type": "section",
+      "block_id": "155",
+      "text": {
+        "type": "mrkdwn",
+        "text": "카일님께서 호돌님이 작성하신 호돌 : 애플워치 팝니다에 관심이 있습니다."
+      },
+      "accessory": {
+        "type": "image",
+        "image_url": "https://market-photos.s3.ap-northeast-2.amazonaws.com/thumbnail-git_commit1.png.jpeg",
+        "alt_text": "호돌 : 애플워치 팝니다"
+      }
+    }
+  ]
 }
 ###
 
