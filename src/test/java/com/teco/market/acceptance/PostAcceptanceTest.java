@@ -91,8 +91,7 @@ class PostAcceptanceTest extends TestUtil {
 
         String contentAsString = mvcResult.getResponse().getContentAsString();
         Page<PostResponse> response = super.objectMapper.readValue(
-            contentAsString, new TypeReference<CustomPage<PostResponse>>() {
-            });
+            contentAsString, new TypeReference<CustomPage<PostResponse>>() {});
         assertThat(response.getContent()).hasSize(3);
     }
 
