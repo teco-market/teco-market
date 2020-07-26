@@ -9,10 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.teco.market.comment.Comment;
 import com.teco.market.comment.repository.CommentRepository;
+import com.teco.market.common.exception.notfound.NotFoundPostException;
 import com.teco.market.like.repository.LikeRepository;
 import com.teco.market.post.Post;
 import com.teco.market.post.repository.PostRepository;
-import com.teco.market.common.exception.notfound.NotFoundPostException;
 import com.teco.market.post.web.PostDetailResponse;
 import com.teco.market.post.web.PostResponse;
 import lombok.AllArgsConstructor;

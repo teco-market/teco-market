@@ -1,4 +1,4 @@
-package com.teco.market.oauth2.web;
+package com.teco.market.comment;
 
 import static org.springframework.http.ResponseEntity.*;
 
@@ -16,15 +16,15 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.teco.market.comment.Comment;
-import com.teco.market.comment.web.CommentResponse;
-import com.teco.market.comment.web.MyCommentResponse;
 import com.teco.market.comment.service.CommentQueryService;
 import com.teco.market.comment.service.CommentService;
-import com.teco.market.comment.web.CommentUpdateRequest;
-import com.teco.market.member.Member;
-import com.teco.market.oauth2.web.interceptor.Authorized;
 import com.teco.market.comment.web.CommentRequest;
+import com.teco.market.comment.web.CommentResponse;
+import com.teco.market.comment.web.CommentUpdateRequest;
+import com.teco.market.comment.web.MyCommentResponse;
+import com.teco.market.member.Member;
+import com.teco.market.oauth2.web.LoginMember;
+import com.teco.market.oauth2.web.interceptor.Authorized;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor

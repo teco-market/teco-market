@@ -57,7 +57,6 @@ public class Post extends BaseEntity {
         this.title = title;
         this.member = member;
         this.category = category;
-        // TODO: 2020/06/09 엔티티로 저장되는지, 값객체로써 처리되는지 확인해야함.
         this.thumbnail = thumbnail;
         this.photos = photos.stream().map(Photo::new).collect(Collectors.toList());
         this.price = price;
