@@ -32,3 +32,6 @@ cloud:
       bucket: market-photos
     region:
       static: ap-northeast-2
+
+slack:
+  url: https://hooks.slack.com/services/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
