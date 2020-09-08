@@ -19,8 +19,8 @@
 > 프로젝트 개발 과정에서 있었던 고민들이며 이에 대한 저의 생각들은 고민별로 링크로 연결되어 있습니다.
 
 - 도메인 설계(객체와 테이블)
-- 개발 프로세스
-- 문서화(Swagger | Spring Rest Docs)
+- [개발 프로세스](https://velog.io/@kyle/%EC%84%9C%EB%B2%84-API-%EB%AC%B8%EC%84%9C%ED%99%94Spring-Rest-docs)
+- [문서화(Swagger | Spring Rest Docs)](https://velog.io/@kyle/Acceptance-Test-%EA%B0%9C%EB%B0%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4)
 - 이미지 업로드
 - 인증 및 인가 
     - 구글 로그인
