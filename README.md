@@ -27,9 +27,9 @@
 - 문서화(Swagger | Spring Rest Docs)
 - 이미지 업로드
 - 인증 및 인가 
-    - 구글 로그인
+    - [카카오 로그인](https://velog.io/@kyle/%EC%B9%B4%EC%B9%B4%EC%98%A4-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EC%99%B8%EB%B6%80-API-%EA%B4%80%EB%A6%AC)
     - 사용자의 역할에 따라 다른 권한 부여
-    - 외부 API를 어떻게 관리할 것인가?
+    - [외부 API를 어떻게 관리할 것인가?](https://velog.io/@kyle/%EC%B9%B4%EC%B9%B4%EC%98%A4-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EC%99%B8%EB%B6%80-API-%EA%B4%80%EB%A6%AC)
     - 외부 API를 어떻게 테스트 할 것인가?
 - 조회성 쿼리 작업 
 - 슬랙 알림 기능(외부 API와 함께 정리)
