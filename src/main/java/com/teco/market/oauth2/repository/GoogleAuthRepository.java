@@ -3,11 +3,11 @@ package com.teco.market.oauth2.repository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import com.teco.market.oauth2.web.dto.GoogleTokenRequest;
-import com.teco.market.oauth2.web.dto.GoogleTokenResponse;
+import com.teco.market.oauth2.user.GoogleUserInfo;
 import com.teco.market.oauth2.util.AuthInfoRequest;
 import com.teco.market.oauth2.util.Oauth2GoogleClient;
-import com.teco.market.oauth2.user.GoogleUserInfo;
+import com.teco.market.oauth2.web.dto.GoogleTokenRequest;
+import com.teco.market.oauth2.web.dto.GoogleTokenResponse;
 
 @Service
 public class GoogleAuthRepository {

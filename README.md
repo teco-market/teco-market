@@ -19,8 +19,12 @@
 > 프로젝트 개발 과정에서 있었던 고민들이며 이에 대한 저의 생각들은 고민별로 링크로 연결되어 있습니다.
 
 - 도메인 설계(객체와 테이블)
+    - [설계 주의 사항](https://velog.io/@kyle/%EB%A7%88%EC%BC%93-%EB%8F%84%EB%A9%94%EC%9D%B8-%EC%84%A4%EA%B3%84-1.-%EC%9C%A0%EC%9D%98%EC%A0%90#%EC%A7%80%EC%96%91%ED%95%98%EB%8A%94-%EC%97%B0%EA%B4%80-%EA%B4%80%EA%B3%84)
+    - UML 및 설계
 - [개발 프로세스](https://velog.io/@kyle/%EC%84%9C%EB%B2%84-API-%EB%AC%B8%EC%84%9C%ED%99%94Spring-Rest-docs)
 - [문서화(Swagger | Spring Rest Docs)](https://velog.io/@kyle/Acceptance-Test-%EA%B0%9C%EB%B0%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4)
+- 개발 프로세스
+- 문서화(Swagger | Spring Rest Docs)
 - 이미지 업로드
 - 인증 및 인가 
     - 구글 로그인
@@ -72,8 +76,23 @@
 - 회원 권한 수정
 - 상품 삭제
 
-### TO-DO
-> 개발 완료한 기능 목록들을 나열한 것으로 대부분 순서대로 진행하였습니다. 
+### TO-DO 2차 개발
+> 08월 ~ 리팩토링을 통해 전체적으로 부족한 테스트를 점검하고, 로직을 수행하고 있습니다.
+- [ ] Oauth2 Google Login 모듈 분리 및 리팩토링
+    - [ ] 외부 API 테스트 추가
+- [ ] 이미지 업로드 로직 수정
+- [ ] Spring Boot 버전 의존성 문제 해결    
+- [ ] 사용자의 권한을 확인하여 선택적으로 권한을 제공하는 로직 구현
+- [ ] 슬랙 API 사용 - JsonProperty를 활용하여, 불필요한 클래스 삭제
+- [ ] 도메인 중복 CRUD 추상화
+- [ ] 도메인별 부족한 테스트 추가
+- [ ] Spring Rest Docs 적용
+- [ ] 도메인 리팩토링
+
+
+
+### TO-DO 1차 개발
+> 06~07월 개발 내용이며 나열한 것으로 대부분 순서대로 진행하였습니다.  
 - [x] 도메인 모델 설계
 
 - [x] Spring rest docs 의존성 추가
