@@ -2,6 +2,7 @@ package com.teco.market.slack.notify;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.teco.market.member.Member;
+import com.teco.market.member.web.MemberResponse;
 import com.teco.market.post.Post;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,7 +21,7 @@ public class Section {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Accessory accessory;
 
-    public Section(Member sender, Member receiver, Post post) {
+    public Section(Member sender, MemberResponse receiver, Post post) {
         this.type = SECTION;
         this.block_id = String.valueOf((int)(Math.random() * 1000) + 10);
         this.text = new Text(sender, receiver, post);

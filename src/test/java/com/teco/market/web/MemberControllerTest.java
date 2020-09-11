@@ -13,7 +13,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.teco.market.TestUtil;
 import com.teco.market.member.MemberService;
-import com.teco.market.member.web.MemberUpdateRequest;
+import com.teco.market.member.web.MemberRequiredUpdateRequest;
 
 class MemberControllerTest extends TestUtil {
 
@@ -28,7 +28,7 @@ class MemberControllerTest extends TestUtil {
 
     @Test
     void updatedMember() throws Exception {
-        MemberUpdateRequest request = new MemberUpdateRequest("KILE", 1L);
+        MemberRequiredUpdateRequest request = new MemberRequiredUpdateRequest("KILE", 1L);
         this.mockMvc.perform(put("/me")
             .header("Authorization", "Bearer", guestToken())
             .contentType(MediaType.APPLICATION_JSON)
@@ -36,6 +36,6 @@ class MemberControllerTest extends TestUtil {
         )
             .andExpect(status().isOk());
 
-        verify(memberService).update(any(),any());
+        verify(memberService).updateRequiredInfo(any(),any());
     }
 }

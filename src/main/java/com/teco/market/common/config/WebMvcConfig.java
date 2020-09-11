@@ -7,8 +7,8 @@ import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.teco.market.support.annotation.BearerInterceptor;
-import com.teco.market.support.annotation.LoginMemberArgumentResolver;
+import com.teco.market.support.BearerInterceptor;
+import com.teco.market.support.LoginMemberArgumentResolver;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor

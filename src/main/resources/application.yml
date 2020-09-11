@@ -21,6 +21,7 @@ jpa:
     hibernate:
       format-sql: true
 
+
 log4j:
   logger:
     org.hibernate.SQL: debug
@@ -35,3 +36,7 @@ cloud:
 
 slack:
   url: https://hooks.slack.com/services/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
+
+spring:
+  jpa:
+    open-in-view: false

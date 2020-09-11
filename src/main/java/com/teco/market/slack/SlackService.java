@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.teco.market.member.Member;
 import com.teco.market.member.MemberService;
+import com.teco.market.member.web.MemberResponse;
 import com.teco.market.post.Post;
 import com.teco.market.post.service.PostService;
 import com.teco.market.slack.notify.Channel;
@@ -19,7 +20,7 @@ public class SlackService {
     private final PostService postService;
 
     public void sendMessage(SlackMessageRequest request, Member sender) {
-        Member receiver = memberService.findMemberById(request.getReceiver());
+        MemberResponse receiver = memberService.retrieveById(request.getReceiver());
         Post post = postService.findById(request.getPost());
         notifier.notify(Channel.INCOMING, sender, receiver, post);
     }

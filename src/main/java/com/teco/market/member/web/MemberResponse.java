@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class MemberResponse {
+    private Long id;
     private Long kakaoId;
     private String nickname;
     private String email;
@@ -18,7 +19,7 @@ public class MemberResponse {
 
     @QueryProjection
     @Builder
-    public MemberResponse(Long kakaoId, String nickname, String email, String name, String role, String generation) {
+    public MemberResponse(Long id, Long kakaoId, String nickname, String email, String name, String role, String generation) {
         this.kakaoId = kakaoId;
         this.nickname = nickname;
         this.email = email;
@@ -29,6 +30,7 @@ public class MemberResponse {
 
     public static MemberResponse of(Member member) {
         return MemberResponse.builder()
+            .id(member.getId())
             .nickname(member.getNickname())
             .email(member.getEmail())
             .role(member.getRole().name())

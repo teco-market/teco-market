@@ -1,4 +1,4 @@
-package com.teco.market.support.annotation;
+package com.teco.market.support;
 
 import java.util.Objects;
 

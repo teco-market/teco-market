@@ -23,7 +23,7 @@ import com.teco.market.comment.web.CommentResponse;
 import com.teco.market.comment.web.CommentUpdateRequest;
 import com.teco.market.comment.web.MyCommentResponse;
 import com.teco.market.member.Member;
-import com.teco.market.support.annotation.LoginMember;
+import com.teco.market.support.LoginMember;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor

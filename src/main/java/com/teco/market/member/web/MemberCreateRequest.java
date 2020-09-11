@@ -1,5 +1,8 @@
 package com.teco.market.member.web;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import com.teco.market.member.Member;
 import com.teco.market.member.Role;
 import lombok.Builder;
@@ -9,8 +12,11 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class MemberCreateRequest {
+    @NotNull
     private Long kakaoId;
+    @NotBlank
     private String name;
+    @NotBlank
     private String email;
 
     @Builder

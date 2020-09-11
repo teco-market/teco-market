@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.teco.market.TestUtil;
 import com.teco.market.member.web.MemberResponse;
-import com.teco.market.member.web.MemberUpdateRequest;
+import com.teco.market.member.web.MemberRequiredUpdateRequest;
 
 @Transactional
 class MemberAcceptanceTest extends TestUtil {
@@ -43,7 +43,7 @@ class MemberAcceptanceTest extends TestUtil {
     }
 
     private void requestRequiredInfo(String token, String nickname, Long generationId) throws Exception {
-        MemberUpdateRequest content = new MemberUpdateRequest(nickname, generationId);
+        MemberRequiredUpdateRequest content = new MemberRequiredUpdateRequest(nickname, generationId);
         super.mockMvc.perform(put("/me")
             .content(super.objectMapper.writeValueAsString(content))
             .contentType(MediaType.APPLICATION_JSON)

@@ -9,6 +9,7 @@ import com.teco.market.common.exception.notfound.NotFoundMemberException;
 import com.teco.market.generation.Generation;
 import com.teco.market.generation.GenerationRepository;
 import com.teco.market.member.web.MemberCreateRequest;
+import com.teco.market.member.web.MemberRequiredUpdateRequest;
 import com.teco.market.member.web.MemberResponse;
 import com.teco.market.member.web.MemberUpdateRequest;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +20,6 @@ public class MemberService {
     private final MemberRepository memberRepository;
     private final GenerationRepository generationRepository;
 
-
     public MemberResponse createMember(MemberCreateRequest request) {
         Member requestMember = request.toMember();
         Member savedMember = memberRepository.save(requestMember);
@@ -27,16 +27,18 @@ public class MemberService {
         return MemberResponse.of(savedMember);
     }
 
-    public Member findMemberById(Long id) {
-        return memberRepository.findById(id)
+    public MemberResponse retrieveById(Long id) {
+        Member findMember = memberRepository.findById(id)
             .orElseThrow(NotFoundMemberException::new);
+
+        return MemberResponse.of(findMember);
     }
 
-    public void update(Member member, MemberUpdateRequest request) {
-        Generation findGeneration = generationRepository.findById(request.getGenerationId())
-            .orElseThrow(NotFoundGenerationException::new);
-        member.setRequiredInfo(request.getNickname(), findGeneration);
-        member.changeRole();
+    public MemberResponse findByKakaoId(Long id) {
+        Member findMember = memberRepository.findByKakaoId(id)
+            .orElseThrow(NotFoundMemberException::new);
+
+        return MemberResponse.of(findMember);
     }
 
     public boolean existsByKakaoId(Long id) {
@@ -45,10 +47,23 @@ public class MemberService {
         return findMember.isPresent();
     }
 
-    public MemberResponse findByKakaoId(Long id) {
-        Member findMember = memberRepository.findByKakaoId(id)
+    public void update(Long id, MemberUpdateRequest request) {
+        Member findMember = memberRepository.findById(id)
             .orElseThrow(NotFoundMemberException::new);
 
-        return MemberResponse.of(findMember);
+        findMember.updateRequiredInfo(request.getName(), request.getNickname(), request.getEmail());
+    }
+
+    public void updateRequiredInfo(Long id, MemberRequiredUpdateRequest request) {
+        Member findMember = memberRepository.findById(id)
+            .orElseThrow(NotFoundMemberException::new);
+        Generation findGeneration = generationRepository.findById(request.getGenerationId())
+            .orElseThrow(NotFoundGenerationException::new);
+
+        findMember.updateRequiredInfo(request.getNickname(), findGeneration);
+    }
+
+    public void deleteById(Long id) {
+        memberRepository.deleteById(id);
     }
 }

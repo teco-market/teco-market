@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.google.common.collect.Lists;
 import com.teco.market.member.Member;
+import com.teco.market.member.web.MemberResponse;
 import com.teco.market.post.Post;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,7 +24,7 @@ public class SlackMessage {
         this.channel = channel;
     }
 
-    public void addMessage(Member sender, Member receiver, Post post) {
+    public void addMessage(Member sender, MemberResponse receiver, Post post) {
         Section section = new Section(sender, receiver, post);
         section.addAccessory(post);
         blocks.add(section);

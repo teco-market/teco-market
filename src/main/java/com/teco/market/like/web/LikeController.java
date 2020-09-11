@@ -15,10 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.teco.market.like.service.LikeQueryService;
 import com.teco.market.like.service.LikeService;
 import com.teco.market.member.Member;
-import com.teco.market.support.annotation.LoginMember;
-import lombok.AllArgsConstructor;
+import com.teco.market.member.web.MemberResponse;
+import com.teco.market.support.LoginMember;
+import lombok.RequiredArgsConstructor;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @RestController
 public class LikeController {
     private final LikeService likeService;

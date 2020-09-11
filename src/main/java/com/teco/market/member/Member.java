@@ -6,10 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 import com.teco.market.BaseEntity;
 import com.teco.market.generation.Generation;
@@ -39,8 +37,8 @@ public class Member extends BaseEntity {
     }
 
     @Builder
-    public Member(Long id, LocalDateTime createdAt, LocalDateTime updatedAt, Long kakaoId, String name,
-        String email, Role role) {
+    public Member(Long id, LocalDateTime createdAt, LocalDateTime updatedAt, Long kakaoId, String name, String email,
+        Role role) {
         super(id, createdAt, updatedAt);
         this.kakaoId = kakaoId;
         this.name = name;
@@ -48,9 +46,10 @@ public class Member extends BaseEntity {
         this.role = role;
     }
 
-    public void setRequiredInfo(String nickname, Generation generation) {
+    public void updateRequiredInfo(String nickname, Generation generation) {
         this.nickname = nickname;
         setGeneration(generation);
+        changeRole();
     }
 
     private void setGeneration(Generation generation) {
@@ -58,7 +57,13 @@ public class Member extends BaseEntity {
         generation.addMember(this);
     }
 
-    public void changeRole() {
+    private void changeRole() {
         this.role = Role.USER;
+    }
+
+    public void updateRequiredInfo(String name, String nickname, String email) {
+        this.name = name;
+        this.nickname = nickname;
+        this.email = email;
     }
 }

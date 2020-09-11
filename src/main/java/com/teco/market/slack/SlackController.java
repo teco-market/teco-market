@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.teco.market.member.Member;
 import com.teco.market.slack.notify.SlackMessageRequest;
-import com.teco.market.support.annotation.LoginMember;
+import com.teco.market.support.LoginMember;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor

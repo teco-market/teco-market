@@ -1,4 +1,4 @@
-package com.teco.market.support.annotation;
+package com.teco.market.support;
 
 import static org.springframework.web.context.request.RequestAttributes.*;
 
@@ -27,14 +27,14 @@ public class LoginMemberArgumentResolver implements HandlerMethodArgumentResolve
     @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
         NativeWebRequest webRequest, WebDataBinderFactory binderFactory) {
-        final String attribute = (String)webRequest.getAttribute("kakaoId", SCOPE_REQUEST);
+        String attribute = (String)webRequest.getAttribute("kakaoId", SCOPE_REQUEST);
 
         if (Objects.isNull(attribute)) {
             throw new AssertionError("Cannot find loginMemberKakaoId NativeWebRequest attribute!");
         }
 
         try {
-            final long kakaoId = Long.parseLong(attribute);
+            long kakaoId = Long.parseLong(attribute);
             return memberService.findByKakaoId(kakaoId);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Cannot find Member");

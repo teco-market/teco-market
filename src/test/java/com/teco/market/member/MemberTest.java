@@ -13,7 +13,7 @@ class MemberTest {
     @Test
     void setRequiredInfo() {
         Member member = new Member();
-        member.setRequiredInfo("카일", new Generation("우테크루즈"));
+        member.updateRequiredInfo("카일", new Generation("우테크루즈"));
 
         assertThat(member.getNickname()).isEqualTo("카일");
         assertThat(member.getGeneration().getAlias()).isEqualTo("우테크루즈");

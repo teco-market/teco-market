@@ -45,6 +45,7 @@ public class PostService {
             .photos(savePhotos(files))
             .thumbnail(thumbnail(files.get(FIRST_PHOTO)))
             .build();
+
         postRepository.save(post);
     }
 

@@ -1,20 +1,22 @@
 package com.teco.market.member.web;
 
-import javax.validation.constraints.NotNull;
-
+import com.teco.market.member.Member;
+import com.teco.market.member.Role;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
 public class MemberUpdateRequest {
-    @NotNull
+    private String name;
+    private String email;
     private String nickname;
-    @NotNull
-    private Long generationId;
 
-    public MemberUpdateRequest(String nickname, Long generationId) {
+    @Builder
+    public MemberUpdateRequest(String name, String email, String nickname) {
+        this.name = name;
+        this.email = email;
         this.nickname = nickname;
-        this.generationId = generationId;
     }
 }

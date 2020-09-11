@@ -1,4 +1,4 @@
-package com.teco.market.support.annotation;
+package com.teco.market.support;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

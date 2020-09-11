@@ -24,7 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.teco.market.member.Member;
 import com.teco.market.post.service.PostQueryService;
 import com.teco.market.post.service.PostService;
-import com.teco.market.support.annotation.LoginMember;
+import com.teco.market.support.LoginMember;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor

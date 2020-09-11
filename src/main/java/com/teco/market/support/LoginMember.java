@@ -1,4 +1,4 @@
-package com.teco.market.support.annotation;
+package com.teco.market.support;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -12,7 +12,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.teco.market.common.exception.notfound.NotFoundGenerationException;
 import com.teco.market.generation.GenerationRepository;
-import com.teco.market.member.web.MemberUpdateRequest;
+import com.teco.market.member.web.MemberRequiredUpdateRequest;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ExtendWith(SpringExtension.class)
@@ -29,7 +29,7 @@ class MemberServiceTest {
         Member member = new Member();
         given(generationRepository.findById(any())).willThrow(NotFoundGenerationException.class);
         assertThatThrownBy(() -> {
-            memberService.update(member, new MemberUpdateRequest());
+            memberService.updateRequiredInfo(member, new MemberRequiredUpdateRequest());
         }).isInstanceOf(NotFoundGenerationException.class);
     }
 }
