@@ -1,4 +1,4 @@
-package com.teco.market.oauth2.web;
+package com.teco.market.support.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

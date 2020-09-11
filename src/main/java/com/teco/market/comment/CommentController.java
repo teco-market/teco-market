@@ -23,8 +23,7 @@ import com.teco.market.comment.web.CommentResponse;
 import com.teco.market.comment.web.CommentUpdateRequest;
 import com.teco.market.comment.web.MyCommentResponse;
 import com.teco.market.member.Member;
-import com.teco.market.oauth2.web.LoginMember;
-import com.teco.market.oauth2.web.interceptor.Authorized;
+import com.teco.market.support.annotation.LoginMember;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -33,7 +32,6 @@ public class CommentController {
     private final CommentService commentService;
     private final CommentQueryService queryService;
 
-    @Authorized
     @PostMapping("/posts/{postId}/comments")
     public ResponseEntity<Void> create(@Valid @RequestBody CommentRequest commentRequest,
         @LoginMember Member member, @PathVariable("postId") Long postId) {
@@ -41,7 +39,6 @@ public class CommentController {
         return status(HttpStatus.CREATED).build();
     }
 
-    @Authorized
     @PutMapping("/comments/{id}")
     public ResponseEntity<Void> update(@Valid @RequestBody CommentUpdateRequest request,
         @LoginMember Member member, @PathVariable Long id) {
@@ -59,14 +56,12 @@ public class CommentController {
         return ok(response);
     }
 
-    @Authorized
     @DeleteMapping("/comments/{id}")
     public ResponseEntity<Void> delete(@LoginMember Member member, @PathVariable Long id) {
         commentService.delete(id, member);
         return noContent().build();
     }
 
-    @Authorized
     @GetMapping("/me/comments")
     public ResponseEntity<Page<MyCommentResponse>> myComments(@LoginMember Member member, Pageable pageable) {
         Page<MyCommentResponse> myComments = queryService.findMyComments(member.getId(), pageable);

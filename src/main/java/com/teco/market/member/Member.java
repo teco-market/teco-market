@@ -13,7 +13,6 @@ import javax.persistence.Table;
 
 import com.teco.market.BaseEntity;
 import com.teco.market.generation.Generation;
-import com.teco.market.oauth2.user.PlatformType;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,11 +21,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-@Table(indexes = {@Index(name = "platform", columnList = "platformId, platformType")})
 public class Member extends BaseEntity {
-    private String platformId;
-    @Enumerated(EnumType.STRING)
-    private PlatformType platformType;
+    private Long kakaoId;
     private String name;
     private String email;
 
@@ -38,16 +34,15 @@ public class Member extends BaseEntity {
     @JoinColumn(name = "generation_id")
     private Generation generation;
 
-    public Member(String platformId, PlatformType platformType, String name, String email, Role role) {
-        this(null, LocalDateTime.now(), null, platformId, platformType, name, email, role);
+    public Member(Long kakaoId, String name, String email, Role role) {
+        this(null, null, null, kakaoId, name, email, role);
     }
 
     @Builder
-    public Member(Long id, LocalDateTime createdAt, LocalDateTime updatedAt, String platformId,
-        PlatformType platformType, String name, String email, Role role) {
+    public Member(Long id, LocalDateTime createdAt, LocalDateTime updatedAt, Long kakaoId, String name,
+        String email, Role role) {
         super(id, createdAt, updatedAt);
-        this.platformId = platformId;
-        this.platformType = platformType;
+        this.kakaoId = kakaoId;
         this.name = name;
         this.email = email;
         this.role = role;

@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.teco.market.like.service.LikeQueryService;
 import com.teco.market.like.service.LikeService;
 import com.teco.market.member.Member;
-import com.teco.market.oauth2.web.LoginMember;
-import com.teco.market.oauth2.web.interceptor.Authorized;
+import com.teco.market.support.annotation.LoginMember;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -25,14 +24,12 @@ public class LikeController {
     private final LikeService likeService;
     private final LikeQueryService likeQueryService;
 
-    @Authorized
     @PostMapping("/posts/{id}/likes")
     public ResponseEntity<Void> create(@PathVariable("id") Long id, @LoginMember Member member) {
         likeService.plus(id, member);
         return status(HttpStatus.CREATED).build();
     }
 
-    @Authorized
     @DeleteMapping("/posts/{id}/likes")
     public ResponseEntity<Void> delete(@PathVariable("id") Long id, @LoginMember Member member) {
         likeService.minus(id, member);
@@ -45,7 +42,6 @@ public class LikeController {
         return ok(LikeResponse.of(count));
     }
 
-    @Authorized
     @GetMapping("/me/likes")
     public ResponseEntity<Page<MyLikeResponse>> findMyLikes(@LoginMember Member member, Pageable pageable) {
         Page<MyLikeResponse> myLikes = likeQueryService.findMyLikes(member, pageable);

@@ -22,12 +22,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.teco.market.member.Member;
-import com.teco.market.member.Role;
-import com.teco.market.oauth2.web.interceptor.Authorized;
 import com.teco.market.post.service.PostQueryService;
 import com.teco.market.post.service.PostService;
-import com.teco.market.oauth2.web.AllowRole;
-import com.teco.market.oauth2.web.LoginMember;
+import com.teco.market.support.annotation.LoginMember;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -37,9 +34,9 @@ public class PostController {
     private final PostService postService;
     private final PostQueryService queryService;
 
-    @AllowRole(roles = {Role.USER, Role.ADMIN})
-    @PostMapping @Authorized
-    public ResponseEntity<Void> create(@Valid @RequestBody PostRequest request,@RequestParam("data") List<MultipartFile> files, @LoginMember Member member) {
+    @PostMapping
+    public ResponseEntity<Void> create(@Valid @RequestBody PostRequest request,
+        @RequestParam("data") List<MultipartFile> files, @LoginMember Member member) {
         postService.save(request, files, member);
         return status(HttpStatus.CREATED).build();
     }
@@ -50,16 +47,14 @@ public class PostController {
         return ok(postDetail);
     }
 
-    @AllowRole(roles = {Role.USER, Role.ADMIN})
-    @PutMapping("/{id}") @Authorized
+    @PutMapping("/{id}")
     public ResponseEntity<Void> update(@Valid @RequestBody PostUpdateRequest request,
         @PathVariable("id") Long id, @LoginMember Member member) {
         postService.update(request, id, member);
         return ok().build();
     }
 
-    @AllowRole(roles = {Role.USER, Role.ADMIN})
-    @DeleteMapping("/{id}") @Authorized
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") Long id, @LoginMember Member member) {
         postService.deleteById(id, member);
         return noContent().build();

@@ -36,6 +36,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: '2.2.6.RELEASE'
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
 
 //    compile group: 'org.springframework.cloud', name: 'spring-cloud-aws', version: '2.2.1.RELEASE', ext: 'pom'
     compile('org.springframework.cloud:spring-cloud-starter-aws')

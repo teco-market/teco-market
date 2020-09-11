@@ -27,7 +27,7 @@ class MemberRepositoryTest {
     @Test
     void findByPlatformIdAndPlatformTypeNotFound() {
         assertThat(
-            memberRepository.findByPlatform("1", PlatformType.GOOGLE).isPresent()
+            memberRepository.findByKakaoId("1", PlatformType.GOOGLE).isPresent()
         ).isTrue();
     }
 }
