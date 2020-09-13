@@ -12,12 +12,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class SlackMessage {
     private String channel;
-    private List<Section> blocks = Lists.newArrayList();
+    private final List<Section> blocks = Lists.newArrayList();
 
     public SlackMessage(String channel) {
         blocks.add(Section.createBasicMessageInfo());

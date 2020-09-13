@@ -1,5 +1,5 @@
 plugins {
-    id 'org.springframework.boot' version '2.2.6.RELEASE'
+    id 'org.springframework.boot' version '2.3.1.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
     id "org.asciidoctor.convert" version "1.5.9.2"
@@ -11,10 +11,6 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 configurations {
-    developmentOnly
-    runtimeClasspath {
-        extendsFrom developmentOnly
-    }
     compileOnly {
         extendsFrom annotationProcessor
     }
@@ -22,60 +18,39 @@ configurations {
 
 repositories {
     mavenCentral()
-    maven { url 'https://repo.spring.io/libs-milestone'}
+}
+
+test {
+    useJUnitPlatform()
 }
 
 dependencies {
     asciidoctor 'org.springframework.restdocs:spring-restdocs-asciidoctor:2.0.4.RELEASE'
-
     testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc:2.0.4.RELEASE'
-
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'net.rakugakibox.spring.boot:logback-access-spring-boot-starter:2.7.1'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.2.6.RELEASE'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: '2.2.6.RELEASE'
-    implementation 'io.jsonwebtoken:jjwt:0.9.1'
-
-//    compile group: 'org.springframework.cloud', name: 'spring-cloud-aws', version: '2.2.1.RELEASE', ext: 'pom'
-    compile('org.springframework.cloud:spring-cloud-starter-aws')
-
-    compile group: 'com.twelvemonkeys.imageio', name: 'imageio', version: '3.5', ext: 'pom'
-    compile group: 'org.imgscalr', name: 'imgscalr-lib', version: '4.2'
-    compile group: 'net.coobird', name: 'thumbnailator', version: '0.4.11'
-
-    implementation 'com.auth0:java-jwt:3.10.3'
-    //querydsl 추가
-    implementation 'com.querydsl:querydsl-jpa'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    runtimeOnly 'com.h2database:h2'
-    runtimeOnly 'mysql:mysql-connector-java'
     annotationProcessor 'org.projectlombok:lombok'
-
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
+    implementation 'com.amazonaws:aws-java-sdk-s3:1.11.820'
+    implementation 'com.querydsl:querydsl-jpa'
+    implementation 'com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.9.3'
+    implementation 'com.h2database:h2'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.2")
-
-
+    testImplementation 'io.rest-assured:rest-assured:3.3.0'
+    testImplementation 'com.squareup.okhttp3:mockwebserver:4.8.0'
+    testImplementation 'com.squareup.okhttp3:okhttp:4.8.0'
+    testImplementation 'io.projectreactor:reactor-test'
+    testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+    asciidoctor 'org.springframework.restdocs:spring-restdocs-asciidoctor'
 }
 
 ext {
     snippetsDir = file('build/generated-snippets')
-}
-dependencyManagement {
-    imports {
-        mavenBom 'org.springframework.cloud:spring-cloud-aws:2.0.0.RC2'
-    }
-}
-
-test {
-    useJUnitPlatform {
-        includeEngines 'junit-jupiter'
-        excludeEngines 'junit-vintage'
-    }
-    outputs.dir snippetsDir
 }
 
 asciidoctor {

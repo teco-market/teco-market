@@ -1,7 +1,5 @@
 package com.teco.market.slack.notify;
 
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
-
 import lombok.Getter;
 
 @Getter

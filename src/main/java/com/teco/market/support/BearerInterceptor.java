@@ -25,8 +25,8 @@ public class BearerInterceptor implements HandlerInterceptor {
         if (isExcludePatterns(request)) {
             return true;
         }
-        final String bearer = extractor.extract(request);
-        final String kakaoId = provider.getSubject(bearer);
+        String bearer = extractor.extract(request);
+        String kakaoId = provider.getSubject(bearer);
         request.setAttribute("kakaoId", kakaoId);
 
         return true;
