@@ -1,5 +1,7 @@
 package com.teco.market.support;
 
+import org.springframework.stereotype.Controller;
+
 import com.teco.market.member.Member;
 
 public class SupportUtil {
@@ -11,7 +13,7 @@ public class SupportUtil {
     static class TestController {
         public void testMethod(@LoginMember Member member) { }
 
-        public void notHandlerMethod(){ }
+        public void notHandlerMethod(@TestAnnotation Member member){ }
 
         public void excludePattern(){ }
     }

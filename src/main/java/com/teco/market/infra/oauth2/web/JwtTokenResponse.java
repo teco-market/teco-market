@@ -1,4 +1,4 @@
-package com.teco.market.infra.oauth2;
+package com.teco.market.infra.oauth2.web;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

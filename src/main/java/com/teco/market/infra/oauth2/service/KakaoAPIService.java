@@ -1,4 +1,4 @@
-package com.teco.market.infra.oauth2;
+package com.teco.market.infra.oauth2.service;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
@@ -7,8 +7,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 
-import com.teco.market.infra.oauth2.dto.KakaoTokenResponse;
-import com.teco.market.infra.oauth2.dto.KakaoUserResponse;
+import com.teco.market.infra.oauth2.web.JwtTokenResponse;
+import com.teco.market.infra.oauth2.web.KakaoTokenResponse;
+import com.teco.market.infra.oauth2.web.KakaoUserResponse;
 import reactor.core.publisher.Mono;
 
 @Component

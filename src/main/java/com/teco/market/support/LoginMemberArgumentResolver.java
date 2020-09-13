@@ -11,6 +11,8 @@ import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
+import com.teco.market.common.exception.notfound.NotFoundMemberException;
+import com.teco.market.member.Member;
 import com.teco.market.member.MemberService;
 import lombok.RequiredArgsConstructor;
 
@@ -25,19 +27,19 @@ public class LoginMemberArgumentResolver implements HandlerMethodArgumentResolve
     }
 
     @Override
-    public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
+    public Member resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
         NativeWebRequest webRequest, WebDataBinderFactory binderFactory) {
         String attribute = (String)webRequest.getAttribute("kakaoId", SCOPE_REQUEST);
 
         if (Objects.isNull(attribute)) {
-            throw new AssertionError("Cannot find loginMemberKakaoId NativeWebRequest attribute!");
+            throw new AssertionError("Cannot find KakaoId NativeWebRequest attribute!");
         }
 
         try {
             long kakaoId = Long.parseLong(attribute);
             return memberService.findByKakaoId(kakaoId);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Cannot find Member");
+            throw new NotFoundMemberException();
         }
     }
 }

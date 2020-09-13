@@ -34,11 +34,11 @@ public class MemberService {
         return MemberResponse.of(findMember);
     }
 
-    public MemberResponse findByKakaoId(Long id) {
+    public Member findByKakaoId(Long id) {
         Member findMember = memberRepository.findByKakaoId(id)
             .orElseThrow(NotFoundMemberException::new);
 
-        return MemberResponse.of(findMember);
+        return findMember;
     }
 
     public boolean existsByKakaoId(Long id) {

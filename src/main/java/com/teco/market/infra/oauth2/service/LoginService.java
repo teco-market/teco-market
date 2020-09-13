@@ -1,10 +1,13 @@
-package com.teco.market.infra.oauth2;
+package com.teco.market.infra.oauth2.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.teco.market.infra.oauth2.dto.KakaoTokenResponse;
-import com.teco.market.infra.oauth2.dto.KakaoUserResponse;
+import com.teco.market.infra.oauth2.JwtTokenProvider;
+import com.teco.market.infra.oauth2.web.JwtTokenResponse;
+import com.teco.market.infra.oauth2.web.KakaoTokenResponse;
+import com.teco.market.infra.oauth2.web.KakaoUserResponse;
+import com.teco.market.member.Member;
 import com.teco.market.member.MemberService;
 import com.teco.market.member.web.MemberCreateRequest;
 import com.teco.market.member.web.MemberResponse;
@@ -25,19 +28,19 @@ public class LoginService {
         this.jwtTokenProvider = jwtTokenProvider;
     }
 
-    public String createJwtTokenUrl(final String code) {
+    public String createJwtTokenUrl(String code) {
         return kakaoAPIService.createTokenUrl(createJwtToken(code));
     }
 
-    private JwtTokenResponse createJwtToken(final String code) {
+    private JwtTokenResponse createJwtToken(String code) {
         KakaoTokenResponse kakaoTokenResponse = kakaoAPIService.fetchOAuthToken(code).block();
         KakaoUserResponse kakaoUserResponse = kakaoAPIService.fetchUserInfo(kakaoTokenResponse).block();
         if (memberService.existsByKakaoId(kakaoUserResponse.getId())) {
-            MemberResponse memberResponse = memberService.findByKakaoId(kakaoUserResponse.getId());
-            return JwtTokenResponse.of(jwtTokenProvider.createToken(memberResponse.getKakaoId().toString()));
+            Member member = memberService.findByKakaoId(kakaoUserResponse.getId());
+            return JwtTokenResponse.of(jwtTokenProvider.createToken(member.getKakaoId().toString()));
         }
 
-        final MemberCreateRequest memberCreateRequest = MemberCreateRequest.builder()
+        MemberCreateRequest memberCreateRequest = MemberCreateRequest.builder()
             .kakaoId(kakaoUserResponse.getId())
             .email(kakaoUserResponse.getEmail())
             .name(kakaoUserResponse.getNickname())
