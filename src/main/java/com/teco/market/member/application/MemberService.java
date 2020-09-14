@@ -1,4 +1,4 @@
-package com.teco.market.member;
+package com.teco.market.member.application;
 
 import java.util.Optional;
 
@@ -8,6 +8,8 @@ import com.teco.market.common.exception.notfound.NotFoundGenerationException;
 import com.teco.market.common.exception.notfound.NotFoundMemberException;
 import com.teco.market.generation.Generation;
 import com.teco.market.generation.GenerationRepository;
+import com.teco.market.member.domain.Member;
+import com.teco.market.member.domain.MemberRepository;
 import com.teco.market.member.web.MemberCreateRequest;
 import com.teco.market.member.web.MemberRequiredUpdateRequest;
 import com.teco.market.member.web.MemberResponse;

@@ -11,8 +11,8 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import com.teco.market.infra.oauth2.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 
-@Component
 @RequiredArgsConstructor
+@Component
 public class BearerInterceptor implements HandlerInterceptor {
     private final AuthorizationExtractor extractor;
     private final JwtTokenProvider provider;

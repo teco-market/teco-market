@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.teco.market.common.exception.InvalidSlackMessageException;
-import com.teco.market.member.Member;
+import com.teco.market.member.domain.Member;
 import com.teco.market.member.web.MemberResponse;
 import com.teco.market.post.Post;
 import lombok.AllArgsConstructor;

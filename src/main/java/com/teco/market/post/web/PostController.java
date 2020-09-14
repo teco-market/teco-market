@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.teco.market.member.Member;
+import com.teco.market.member.domain.Member;
 import com.teco.market.post.service.PostQueryService;
 import com.teco.market.post.service.PostService;
 import com.teco.market.support.LoginMember;

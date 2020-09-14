@@ -14,8 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.teco.market.like.service.LikeQueryService;
 import com.teco.market.like.service.LikeService;
-import com.teco.market.member.Member;
-import com.teco.market.member.web.MemberResponse;
+import com.teco.market.member.domain.Member;
 import com.teco.market.support.LoginMember;
 import lombok.RequiredArgsConstructor;
 

@@ -3,8 +3,8 @@ package com.teco.market.member.web;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import com.teco.market.member.Member;
-import com.teco.market.member.Role;
+import com.teco.market.member.domain.Member;
+import com.teco.market.member.domain.Role;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

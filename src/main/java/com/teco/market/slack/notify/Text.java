@@ -1,6 +1,6 @@
 package com.teco.market.slack.notify;
 
-import com.teco.market.member.Member;
+import com.teco.market.member.domain.Member;
 import com.teco.market.member.web.MemberResponse;
 import com.teco.market.post.Post;
 import lombok.Getter;

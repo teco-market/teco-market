@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.teco.market.member.Member;
-import com.teco.market.member.MemberService;
+import com.teco.market.member.application.MemberService;
+import com.teco.market.member.domain.Member;
 import com.teco.market.support.LoginMember;
 import lombok.RequiredArgsConstructor;
 
@@ -30,7 +30,7 @@ public class MemberController {
     public ResponseEntity<Void> create(@Valid @RequestBody MemberCreateRequest request) {
         MemberResponse response = memberService.createMember(request);
 
-        return ResponseEntity.created(URI.create(String.format("/api/members/%d", response.getId()))).build();
+        return ResponseEntity.created(URI.create("/api/members/" + response.getId())).build();
     }
 
     @GetMapping("/{id}")
@@ -45,7 +45,7 @@ public class MemberController {
         @Valid @RequestBody MemberUpdateRequest request) {
         memberService.update(member.getId(), request);
 
-        return ResponseEntity.ok().location(URI.create("/api/members" + member.getId())).build();
+        return ResponseEntity.noContent().build();
     }
 
     @PatchMapping
@@ -53,7 +53,7 @@ public class MemberController {
         @Valid @RequestBody MemberRequiredUpdateRequest request) {
         memberService.updateRequiredInfo(member.getId(), request);
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping

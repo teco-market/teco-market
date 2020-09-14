@@ -3,12 +3,12 @@ package com.teco.market.like.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.teco.market.common.exception.notfound.NotFoundPostException;
 import com.teco.market.like.Like;
 import com.teco.market.like.repository.LikeRepository;
-import com.teco.market.member.Member;
+import com.teco.market.member.domain.Member;
 import com.teco.market.post.Post;
 import com.teco.market.post.repository.PostRepository;
-import com.teco.market.common.exception.notfound.NotFoundPostException;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor

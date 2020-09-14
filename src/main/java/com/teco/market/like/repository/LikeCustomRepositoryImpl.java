@@ -11,7 +11,7 @@ import com.querydsl.core.QueryResults;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.teco.market.like.web.MyLikeResponse;
 import com.teco.market.like.web.QMyLikeResponse;
-import com.teco.market.member.Member;
+import com.teco.market.member.domain.Member;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor

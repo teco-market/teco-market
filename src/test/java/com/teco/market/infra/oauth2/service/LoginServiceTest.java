@@ -18,7 +18,7 @@ import com.teco.market.infra.oauth2.web.JwtTokenResponse;
 import com.teco.market.infra.oauth2.web.KakaoTokenResponse;
 import com.teco.market.infra.oauth2.web.KakaoUserResponse;
 import com.teco.market.member.MemberFixture;
-import com.teco.market.member.MemberService;
+import com.teco.market.member.application.MemberService;
 import com.teco.market.member.web.MemberCreateRequest;
 import reactor.core.publisher.Mono;
 

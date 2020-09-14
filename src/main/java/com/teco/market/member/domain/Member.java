@@ -1,4 +1,4 @@
-package com.teco.market.member;
+package com.teco.market.member.domain;
 
 import java.time.LocalDateTime;
 

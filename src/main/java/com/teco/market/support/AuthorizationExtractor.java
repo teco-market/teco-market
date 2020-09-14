@@ -15,11 +15,11 @@ public class AuthorizationExtractor {
     private static final int VALID_AUTHORIZATION_LENGTH = 2;
 
     public String extract(final HttpServletRequest request) {
-        final String authorization = request.getHeader(AUTHORIZATION_HEADER);
+        String authorization = request.getHeader(AUTHORIZATION_HEADER);
         if (Objects.isNull(authorization)) {
             throw new IllegalArgumentException("로그인이 필요합니다.");
         }
-        final String[] splitToken = authorization.split(" ");
+        String[] splitToken = authorization.split(" ");
 
         if (splitToken.length != VALID_AUTHORIZATION_LENGTH || !splitToken[TOKEN_TYPE_INDEX].equals(TOKEN_TYPE)) {
             throw new IllegalArgumentException("유효하지 않은 토큰입니다.");

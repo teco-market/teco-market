@@ -12,8 +12,8 @@ import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
 import com.teco.market.common.exception.notfound.NotFoundMemberException;
-import com.teco.market.member.Member;
-import com.teco.market.member.MemberService;
+import com.teco.market.member.application.MemberService;
+import com.teco.market.member.domain.Member;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

@@ -3,10 +3,9 @@ package com.teco.market.slack.notify;
 import java.util.List;
 
 import com.google.common.collect.Lists;
-import com.teco.market.member.Member;
+import com.teco.market.member.domain.Member;
 import com.teco.market.member.web.MemberResponse;
 import com.teco.market.post.Post;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

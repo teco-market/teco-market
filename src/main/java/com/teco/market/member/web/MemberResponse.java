@@ -1,7 +1,7 @@
 package com.teco.market.member.web;
 
 import com.querydsl.core.annotations.QueryProjection;
-import com.teco.market.member.Member;
+import com.teco.market.member.domain.Member;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +20,7 @@ public class MemberResponse {
     @QueryProjection
     @Builder
     public MemberResponse(Long id, Long kakaoId, String nickname, String email, String name, String role, String generation) {
+        this.id = id;
         this.kakaoId = kakaoId;
         this.nickname = nickname;
         this.email = email;

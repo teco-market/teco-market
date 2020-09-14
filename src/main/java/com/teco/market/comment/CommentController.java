@@ -22,11 +22,11 @@ import com.teco.market.comment.web.CommentRequest;
 import com.teco.market.comment.web.CommentResponse;
 import com.teco.market.comment.web.CommentUpdateRequest;
 import com.teco.market.comment.web.MyCommentResponse;
-import com.teco.market.member.Member;
+import com.teco.market.member.domain.Member;
 import com.teco.market.support.LoginMember;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @RestController
 public class CommentController {
     private final CommentService commentService;

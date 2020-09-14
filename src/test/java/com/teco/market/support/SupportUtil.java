@@ -1,8 +1,6 @@
 package com.teco.market.support;
 
-import org.springframework.stereotype.Controller;
-
-import com.teco.market.member.Member;
+import com.teco.market.member.domain.Member;
 
 public class SupportUtil {
     public static final String TOKEN_TYPE = "Bearer ";

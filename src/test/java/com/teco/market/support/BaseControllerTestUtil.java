@@ -1,13 +1,12 @@
 package com.teco.market.support;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import org.apache.http.HttpHeaders;
 import org.junit.jupiter.api.BeforeEach;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -17,13 +16,12 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.teco.market.infra.oauth2.LoginFixture;
+import com.teco.market.member.web.MemberResponse;
 
-@WebMvcTest
 public class BaseControllerTestUtil {
-    private MockMvc mockMvc;
+    protected MockMvc mockMvc;
 
-    @Autowired
-    private ObjectMapper objectMapper;
+    protected ObjectMapper objectMapper;
 
     @BeforeEach
     void setUp(WebApplicationContext webApplicationContext) {
@@ -31,11 +29,12 @@ public class BaseControllerTestUtil {
             .addFilters(new CharacterEncodingFilter("UTF-8", true))
             .alwaysDo(print())
             .build();
+        objectMapper = new ObjectMapper();
     }
 
-    <T> ResultActions doPost(String path, Class<T> request) throws Exception {
+    protected <T> ResultActions doPost(String path, T request) throws Exception {
         return mockMvc.perform(post(path)
-            .header(LoginFixture.getUserTokenHeader())
+            .header(HttpHeaders.AUTHORIZATION, LoginFixture.getUserTokenHeader())
             .contentType(MediaType.APPLICATION_JSON)
             .content(objectMapper.writeValueAsBytes(request))
         )
@@ -43,27 +42,43 @@ public class BaseControllerTestUtil {
             .andExpect(header().string(HttpHeaders.LOCATION, path + "/1"));
     }
 
-    ResultActions doGet(String path) throws Exception {
-        return mockMvc.perform(get(path)
-            .header(LoginFixture.getUserTokenHeader())
+    protected <T> ResultActions doGet(String path, T expected) throws Exception {
+        ResultActions result = mockMvc.perform(get(path)
+            .header(HttpHeaders.AUTHORIZATION, LoginFixture.getUserTokenHeader())
             .accept(MediaType.APPLICATION_JSON)
         )
             .andExpect(status().isOk());
+
+        String responseBody = result.andReturn()
+            .getResponse()
+            .getContentAsString();
+
+        assertThat(objectMapper.readValue(responseBody, MemberResponse.class))
+            .isEqualToComparingFieldByField(expected);
+
+        return result;
     }
 
-    <T> ResultActions doPut(String path, Class<T> request) throws Exception {
+    protected <T> ResultActions doPut(String path, T request) throws Exception {
         return mockMvc.perform(put(path)
-            .header(LoginFixture.getUserTokenHeader())
+            .header(HttpHeaders.AUTHORIZATION, LoginFixture.getUserTokenHeader())
             .contentType(MediaType.APPLICATION_JSON)
             .content(objectMapper.writeValueAsBytes(request))
         )
-            .andExpect(status().isOk())
-            .andExpect(header().string(HttpHeaders.LOCATION, path));
+            .andExpect(status().isNoContent());
     }
 
-    void doDelete(String path) throws Exception {
+    protected <T> ResultActions doPatch(String path, T request) throws Exception {
+        return mockMvc.perform(patch(path)
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(objectMapper.writeValueAsBytes(request))
+        )
+            .andExpect(status().isNoContent());
+    }
+
+    protected void doDelete(String path) throws Exception {
         mockMvc.perform(delete(path)
-            .header(LoginFixture.getUserTokenHeader())
+            .header(HttpHeaders.AUTHORIZATION, LoginFixture.getUserTokenHeader())
         )
             .andExpect(status().isNoContent());
     }

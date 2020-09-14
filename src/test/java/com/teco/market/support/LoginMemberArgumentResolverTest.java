@@ -16,9 +16,9 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.context.request.ServletWebRequest;
 
 import com.teco.market.common.exception.notfound.NotFoundMemberException;
-import com.teco.market.member.Member;
 import com.teco.market.member.MemberFixture;
-import com.teco.market.member.MemberService;
+import com.teco.market.member.application.MemberService;
+import com.teco.market.member.domain.Member;
 
 @ExtendWith(MockitoExtension.class)
 class LoginMemberArgumentResolverTest {

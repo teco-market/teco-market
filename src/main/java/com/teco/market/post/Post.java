@@ -19,7 +19,7 @@ import com.teco.market.BaseEntity;
 import com.teco.market.category.Category;
 import com.teco.market.image.Photo;
 import com.teco.market.image.Thumbnail;
-import com.teco.market.member.Member;
+import com.teco.market.member.domain.Member;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

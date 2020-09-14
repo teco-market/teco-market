@@ -2,8 +2,8 @@ package com.teco.market.slack;
 
 import org.springframework.stereotype.Service;
 
-import com.teco.market.member.Member;
-import com.teco.market.member.MemberService;
+import com.teco.market.member.application.MemberService;
+import com.teco.market.member.domain.Member;
 import com.teco.market.member.web.MemberResponse;
 import com.teco.market.post.Post;
 import com.teco.market.post.service.PostService;

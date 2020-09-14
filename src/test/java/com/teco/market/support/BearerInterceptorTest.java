@@ -2,8 +2,7 @@ package com.teco.market.support;
 
 import static com.teco.market.support.SupportUtil.*;
 import static org.assertj.core.api.AssertionsForClassTypes.*;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.BDDMockito.*;
 
 import java.lang.reflect.Method;
@@ -21,7 +20,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.web.method.HandlerMethod;
 
 import com.teco.market.infra.oauth2.JwtTokenProvider;
-import com.teco.market.member.Member;
+import com.teco.market.member.domain.Member;
 
 @ExtendWith(MockitoExtension.class)
 class BearerInterceptorTest {

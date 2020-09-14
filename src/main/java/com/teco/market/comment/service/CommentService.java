@@ -10,12 +10,12 @@ import com.teco.market.comment.web.CommentUpdateRequest;
 import com.teco.market.common.exception.invalid.InvalidWriterException;
 import com.teco.market.common.exception.notfound.NotFoundCommentException;
 import com.teco.market.common.exception.notfound.NotFoundPostException;
-import com.teco.market.member.Member;
+import com.teco.market.member.domain.Member;
 import com.teco.market.post.Post;
 import com.teco.market.post.repository.PostRepository;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Transactional
 @Service
 public class CommentService {

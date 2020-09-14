@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.teco.market.like.Like;
-import com.teco.market.member.Member;
+import com.teco.market.member.domain.Member;
 import com.teco.market.post.Post;
 
 public interface LikeRepository extends JpaRepository<Like, Long>, LikeCustomRepository {
