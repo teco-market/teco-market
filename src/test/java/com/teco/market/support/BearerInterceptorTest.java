@@ -57,7 +57,7 @@ class BearerInterceptorTest {
     @DisplayName("핸들러 메소드가 아닌 경우 로직을 수행하지 않고 true를 반환한다.")
     @Test
     void notHandlerPreHandle() throws NoSuchMethodException {
-        Method method = TestController.class.getMethod("notHandlerMethod");
+        Method method = TestController.class.getMethod("notHandlerMethod", Member.class);
         handlerMethod = new HandlerMethod(new TestController(), method);
 
         assertThat(interceptor.preHandle(servletRequest, servletResponse, handlerMethod)).isTrue();

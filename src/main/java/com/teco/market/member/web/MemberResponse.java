@@ -35,7 +35,16 @@ public class MemberResponse {
             .nickname(member.getNickname())
             .email(member.getEmail())
             .role(member.getRole().name())
-            .generation(member.getGeneration().getAlias())
+            .build();
+    }
+
+    public static MemberResponse withGeneration(Member member) {
+        return MemberResponse.builder()
+            .id(member.getId())
+            .nickname(member.getNickname())
+            .email(member.getEmail())
+            .role(member.getRole().name())
+            .generation(member.getGeneration() == null ? null : member.getGeneration().getAlias())
             .build();
     }
 }
