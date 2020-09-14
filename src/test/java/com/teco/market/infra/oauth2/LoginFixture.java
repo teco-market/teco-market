@@ -9,8 +9,9 @@ public class LoginFixture {
     public static final String CODE = "code";
     public static final String CODE_VALUE = "CODE";
     public static final String URL = "http:localhost:8080";
-    public static final String TOKEN = "SAMPLE_ACCESS_TOKEN";
-    public static final String ADMIN_TOKEN = "SAMPLE_ADMIN_ACCESS_TOKEN";
+    public static final String GUEST_TOKEN = "SAMPLE_ACCESS_GUEST_TOKEN";
+    public static final String USER_TOKEN = "SAMPLE_ACCESS_USER_TOKEN";
+    public static final String ADMIN_TOKEN = "SAMPLE_ACCESS_ADMIN_TOKEN";
     public static final String LOGIN_SUCCESS = "true";
     public static final String LOGIN_FAIL = "false";
     public static final String SERVER_URI = "http://localhost:8080";
@@ -34,8 +35,8 @@ public class LoginFixture {
 
     public static KakaoTokenResponse createMockKakaoTokenResponse() {
         return KakaoTokenResponse.builder()
-            .accessToken(TOKEN)
-            .refreshToken(TOKEN)
+            .accessToken(USER_TOKEN)
+            .refreshToken(USER_TOKEN)
             .refreshTokenExpiresIn(EXPIRE)
             .expiresIn(EXPIRE)
             .tokenType(TOKEN_TYPE)
@@ -60,5 +61,17 @@ public class LoginFixture {
             .hasGender(EXIST)
             .genderNeedsAgreement(EXIST)
             .build();
+    }
+
+    public static String getUserTokenHeader() {
+        return TOKEN_TYPE + USER_TOKEN;
+    }
+
+    public static String getGuestTokenHeader() {
+        return TOKEN_TYPE + GUEST_TOKEN;
+    }
+
+    public static String getAdminTokenHeader() {
+        return TOKEN_TYPE + ADMIN_TOKEN;
     }
 }

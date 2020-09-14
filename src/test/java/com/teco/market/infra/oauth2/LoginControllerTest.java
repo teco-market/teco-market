@@ -71,11 +71,11 @@ class LoginControllerTest {
             .willReturn(true);
 
         mockMvc.perform(get("/api/login/check")
-            .param(ACCESS_TOKEN, TOKEN)
+            .param(ACCESS_TOKEN, USER_TOKEN)
             .param(SUCCESS, LOGIN_SUCCESS)
         )
             .andExpect(status().isOk())
-            .andExpect(jsonPath("accessToken").value(TOKEN));
+            .andExpect(jsonPath("accessToken").value(USER_TOKEN));
     }
 
     @DisplayName("로그인 실패 시 Unauthorize 상태를 반환한다.")

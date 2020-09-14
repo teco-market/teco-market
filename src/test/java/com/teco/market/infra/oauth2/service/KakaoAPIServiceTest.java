@@ -104,4 +104,12 @@ class KakaoAPIServiceTest {
             .consumeNextWith(body -> assertThat(body).isEqualToComparingFieldByField(createMockKakaoTokenResponse()))
             .verifyComplete();
     }
+
+    @DisplayName("카카오 서버에 요청을 해 Mono UserInfo를 받아온다.")
+    @Test
+    void fetchOAuthUserInfoTest() {
+        StepVerifier.create(kakaoAPIService.fetchUserInfo(createMockKakaoTokenResponse()))
+            .consumeNextWith(body -> assertThat(body).isEqualToComparingFieldByField(createMockKakaoUserResponse()))
+            .verifyComplete();
+    }
 }
