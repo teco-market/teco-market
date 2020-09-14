@@ -14,4 +14,8 @@ public class GenerationFixture {
             .updatedAt(NOW)
             .build();
     }
+
+    public static GenerationCreateRequest createRequestWithId() {
+        return new GenerationCreateRequest(ALIAS);
+    }
 }

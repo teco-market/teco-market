@@ -37,7 +37,8 @@ public class LoginMemberArgumentResolver implements HandlerMethodArgumentResolve
 
         try {
             long kakaoId = Long.parseLong(attribute);
-            return memberService.findByKakaoId(kakaoId);
+            Member byKakaoId = memberService.findByKakaoId(kakaoId);
+            return byKakaoId;
         } catch (NumberFormatException e) {
             throw new NotFoundMemberException();
         }

@@ -2,7 +2,9 @@ package com.teco.market.member.application;
 
 import java.util.Optional;
 
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.teco.market.common.exception.notfound.NotFoundGenerationException;
 import com.teco.market.common.exception.notfound.NotFoundMemberException;
@@ -17,6 +19,7 @@ import com.teco.market.member.web.MemberUpdateRequest;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
+@Transactional
 @Service
 public class MemberService {
     private final MemberRepository memberRepository;
@@ -29,6 +32,7 @@ public class MemberService {
         return MemberResponse.of(savedMember);
     }
 
+    @Transactional(readOnly = true)
     public MemberResponse retrieveById(Long id) {
         Member findMember = memberRepository.findById(id)
             .orElseThrow(NotFoundMemberException::new);
@@ -36,13 +40,14 @@ public class MemberService {
         return MemberResponse.of(findMember);
     }
 
+    @Transactional(readOnly = true)
     public Member findByKakaoId(Long id) {
-        Member findMember = memberRepository.findByKakaoId(id)
-            .orElseThrow(NotFoundMemberException::new);
 
-        return findMember;
+        return memberRepository.findByKakaoId(id)
+            .orElseThrow(NotFoundMemberException::new);
     }
 
+    @Transactional(readOnly = true)
     public boolean existsByKakaoId(Long id) {
         Optional<Member> findMember = memberRepository.findByKakaoId(id);
 

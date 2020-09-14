@@ -8,9 +8,10 @@ import com.teco.market.member.web.MemberResponse;
 import com.teco.market.member.web.MemberUpdateRequest;
 
 public class MemberFixture {
-    public static final Long GENERATION_ID = 2L;
+    public static final Long GENERATION_ID = 1L;
     public static final Long ID = 1L;
     public final static Long KAKAO_ID = 1038582L;
+    public final static Long ADMIN_KAKAO_ID = 3498509801L;
     public final static String EMAIL = "TEST@GMAIL.COM";
     public final static String EMAIL2 = "UPDATED@GMAIL.COM";
     public final static String NAME = "TEST_NAME";
@@ -37,6 +38,14 @@ public class MemberFixture {
             .build();
     }
 
+    public static MemberCreateRequest createAdmin() {
+        return MemberCreateRequest.builder()
+            .name(NAME)
+            .kakaoId(ADMIN_KAKAO_ID)
+            .email(EMAIL)
+            .build();
+    }
+
     public static MemberResponse createResponse() {
         return MemberResponse.builder()
             .id(ID)
@@ -58,5 +67,9 @@ public class MemberFixture {
 
     public static MemberRequiredUpdateRequest createRequiredInfoRequest() {
         return new MemberRequiredUpdateRequest(NICKNAME2, GENERATION_ID);
+    }
+
+    public static MemberRequiredUpdateRequest createRequiredInfoRequest(Long generationId) {
+        return new MemberRequiredUpdateRequest(NICKNAME2, generationId);
     }
 }

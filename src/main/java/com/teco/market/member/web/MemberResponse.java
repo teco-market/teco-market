@@ -15,18 +15,18 @@ public class MemberResponse {
     private String email;
     private String name;
     private String role;
-    private String generation;
+    private Long generationId;
 
     @QueryProjection
     @Builder
-    public MemberResponse(Long id, Long kakaoId, String nickname, String email, String name, String role, String generation) {
+    public MemberResponse(Long id, Long kakaoId, String nickname, String email, String name, String role, Long generationId) {
         this.id = id;
         this.kakaoId = kakaoId;
         this.nickname = nickname;
         this.email = email;
         this.name = name;
         this.role = role;
-        this.generation = generation;
+        this.generationId = generationId;
     }
 
     public static MemberResponse of(Member member) {
@@ -41,10 +41,12 @@ public class MemberResponse {
     public static MemberResponse withGeneration(Member member) {
         return MemberResponse.builder()
             .id(member.getId())
+            .kakaoId(member.getKakaoId())
+            .name(member.getName())
             .nickname(member.getNickname())
             .email(member.getEmail())
             .role(member.getRole().name())
-            .generation(member.getGeneration() == null ? null : member.getGeneration().getAlias())
+            .generationId(member.getGeneration().getId())
             .build();
     }
 }

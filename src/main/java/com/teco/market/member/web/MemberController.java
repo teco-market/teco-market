@@ -40,6 +40,13 @@ public class MemberController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping
+    public ResponseEntity<MemberResponse> find(@LoginMember Member member) {
+
+        MemberResponse body = MemberResponse.withGeneration(member);
+        return ResponseEntity.ok(body);
+    }
+
     @PutMapping
     public ResponseEntity<MemberResponse> update(@LoginMember Member member,
         @Valid @RequestBody MemberUpdateRequest request) {

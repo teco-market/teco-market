@@ -2,6 +2,7 @@ package com.teco.market.member.domain;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -20,6 +21,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @Entity
 public class Member extends BaseEntity {
+    @Column(unique = true)
     private Long kakaoId;
     private String name;
     private String email;
@@ -28,7 +30,7 @@ public class Member extends BaseEntity {
     private Role role;
     private String nickname;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "generation_id")
     private Generation generation;
 
@@ -54,7 +56,6 @@ public class Member extends BaseEntity {
 
     private void setGeneration(Generation generation) {
         this.generation = generation;
-        generation.addMember(this);
     }
 
     private void changeRole() {
