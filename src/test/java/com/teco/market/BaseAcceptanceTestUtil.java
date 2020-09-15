@@ -2,8 +2,6 @@ package com.teco.market;
 
 import java.util.Objects;
 
-import javax.xml.ws.Response;
-
 import org.apache.http.HttpHeaders;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.boot.test.context.SpringBootTest;
