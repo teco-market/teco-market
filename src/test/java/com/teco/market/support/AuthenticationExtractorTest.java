@@ -12,13 +12,13 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.mock.web.MockHttpServletRequest;
 
-class AuthorizationExtractorTest {
-    private AuthorizationExtractor extractor;
+class AuthenticationExtractorTest {
+    private AuthenticationExtractor extractor;
     private MockHttpServletRequest request;
 
     @BeforeEach
     void setUp() {
-        extractor = new AuthorizationExtractor();
+        extractor = new AuthenticationExtractor();
         request = new MockHttpServletRequest();
     }
 

@@ -9,11 +9,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.teco.market.support.BearerInterceptor;
 import com.teco.market.support.LoginMemberArgumentResolver;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Configuration
-public class WebMvcConfig implements WebMvcConfigurer {
+public class WebMvcConfiguration implements WebMvcConfigurer {
     private final BearerInterceptor bearerAuthInterceptor;
     private final LoginMemberArgumentResolver loginMemberArgumentResolver;
 

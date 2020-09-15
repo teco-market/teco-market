@@ -2,7 +2,6 @@ package com.teco.market.member.application;
 
 import java.util.Optional;
 
-import org.hibernate.Hibernate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -61,6 +60,11 @@ public class MemberService {
         findMember.updateRequiredInfo(request.getName(), request.getNickname(), request.getEmail());
     }
 
+    public void admin(Member member) {
+        member.admin();
+        memberRepository.save(member);
+    }
+
     public void updateRequiredInfo(Long id, MemberRequiredUpdateRequest request) {
         Member findMember = memberRepository.findById(id)
             .orElseThrow(NotFoundMemberException::new);
@@ -72,5 +76,9 @@ public class MemberService {
 
     public void deleteById(Long id) {
         memberRepository.deleteById(id);
+    }
+
+    public void deleteAll() {
+        memberRepository.deleteAll();
     }
 }

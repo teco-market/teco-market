@@ -67,4 +67,12 @@ public class Member extends BaseEntity {
         this.nickname = nickname;
         this.email = email;
     }
+
+    public boolean hasPermission(Role that) {
+        return role.hasPermission(that);
+    }
+
+    public void admin() {
+        this.role = Role.ADMIN;
+    }
 }

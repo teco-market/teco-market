@@ -43,14 +43,19 @@ public class AcceptanceTest extends BaseAcceptanceTestUtil {
         return doPost("/api/members", memberRequest, null);
     }
 
-    protected Long createAdmin() {
-        return doPost("/api/members", MemberFixture.createAdmin(), null);
+    protected void createAdmin() {
+        doPost("/api/members", MemberFixture.createAdmin(), null);
+        doPatch("/api/members/admin/permission", createAdminHeader(), MemberFixture.createRequiredInfoRequest());
+    }
+
+    private Header createAdminHeader() {
+        return createTokenHeader(MemberFixture.ADMIN_KAKAO_ID);
     }
 
     protected Long createGeneration(GenerationCreateRequest request) {
         createAdmin();
 
-        return doPost("/api/generations", request, createTokenHeader(MemberFixture.KAKAO_ID));
+        return doPost("/api/generations", request, createAdminHeader());
     }
 
     protected MemberResponse findMember(Long kakaoId) {

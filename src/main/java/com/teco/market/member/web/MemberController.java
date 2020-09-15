@@ -18,14 +18,17 @@ import org.springframework.web.bind.annotation.RestController;
 import com.teco.market.member.application.MemberService;
 import com.teco.market.member.domain.Member;
 import com.teco.market.support.LoginMember;
+import com.teco.market.support.annotation.Permission;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
+@Permission(target = "USER")
 @RequestMapping("/api/members")
 @RestController
 public class MemberController {
     private final MemberService memberService;
 
+    @Permission(target = "NONE")
     @PostMapping
     public ResponseEntity<Void> create(@Valid @RequestBody MemberCreateRequest request) {
         MemberResponse response = memberService.createMember(request);
@@ -55,6 +58,7 @@ public class MemberController {
         return ResponseEntity.noContent().build();
     }
 
+    @Permission(target = "GUEST")
     @PatchMapping
     public ResponseEntity<Void> updateInfo(@LoginMember Member member,
         @Valid @RequestBody MemberRequiredUpdateRequest request) {
@@ -63,9 +67,24 @@ public class MemberController {
         return ResponseEntity.noContent().build();
     }
 
+    @Permission(target = "GUEST")
+    @PatchMapping("/admin/permission")
+    ResponseEntity<Void> change(@LoginMember Member member, @RequestBody MemberRequiredUpdateRequest request) {
+        memberService.admin(member);
+        return ResponseEntity.noContent().build();
+    }
+
     @DeleteMapping
     public ResponseEntity<Void> delete(@LoginMember Member member) {
         memberService.deleteById(member.getId());
+
+        return ResponseEntity.noContent().build();
+    }
+
+    @Permission(target = "ADMIN")
+    @DeleteMapping("/all")
+    public ResponseEntity<Void> deleteAll() {
+        memberService.deleteAll();
 
         return ResponseEntity.noContent().build();
     }
