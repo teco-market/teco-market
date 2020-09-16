@@ -25,9 +25,9 @@
     - UML 및 설계
 - [개발 프로세스](https://velog.io/@kyle/%EC%84%9C%EB%B2%84-API-%EB%AC%B8%EC%84%9C%ED%99%94Spring-Rest-docs)
 - [문서화(Swagger | Spring Rest Docs)](https://velog.io/@kyle/Acceptance-Test-%EA%B0%9C%EB%B0%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4)
-- 인증 및 인가 
+- [인증 및 인가](https://velog.io/@kyle?tag=%EC%9D%B8%EC%A6%9D%EA%B3%BC-%EC%9D%B8%EA%B0%80) 
     - [카카오 로그인](https://velog.io/@kyle/%EC%B9%B4%EC%B9%B4%EC%98%A4-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EC%99%B8%EB%B6%80-API-%EA%B4%80%EB%A6%AC)
-    - 사용자의 역할에 따라 다른 권한 부여
+    - [사용자의 역할에 따라 다른 권한 부여](https://velog.io/@kyle/%ED%9A%8C%EC%9B%90%EC%97%90-%EA%B6%8C%ED%95%9C%EC%9D%80-%EC%96%B4%EB%96%BB%EA%B2%8C-%EA%B4%80%EB%A6%AC%ED%95%A0%EA%B9%8C)
 - [도메인 테스트 중복 제거](https://velog.io/@kyle/%EC%A0%9C%EB%84%A4%EB%A6%AD%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%9C-%EC%B6%94%EC%83%81%ED%99%94-%EB%B0%8F-%EC%A4%91%EB%B3%B5%EC%A0%9C%EA%B1%B0)
 - 외부 API 관리 전략
     - [외부 API를 어떻게 관리할 것인가?](https://velog.io/@kyle/%EC%B9%B4%EC%B9%B4%EC%98%A4-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EC%99%B8%EB%B6%80-API-%EA%B4%80%EB%A6%AC)
@@ -45,9 +45,9 @@
 - [x] 회원 도메인 리팩토링
     - [x] 외부 API 테스트 추가
 - [x] 도메인 중복 CRUD 추상화
+- [x] 사용자의 권한을 확인하여 선택적으로 권한을 제공하는 로직 구현
 - [ ] API Serialize & Deserialize 구현 
 - [ ] 이미지 업로드 로직 수정
-- [ ] 사용자의 권한을 확인하여 선택적으로 권한을 제공하는 로직 구현
 - [ ] 도메인 리팩토링
 - [ ] 슬랙 API 사용 - JsonProperty를 활용하여, 불필요한 클래스 삭제
 - [ ] 도메인별 부족한 테스트 추가
