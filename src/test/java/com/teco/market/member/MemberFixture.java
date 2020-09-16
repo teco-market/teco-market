@@ -20,13 +20,33 @@ public class MemberFixture {
     public final static String NICKNAME2 = "KYLE-UPDATED";
     public static final Role ROLE = Role.USER;
 
-    public static Member createWithId(Long id) {
+    public static Member createGuestWithId(Long id) {
         return Member.builder()
             .id(id)
             .kakaoId(KAKAO_ID)
             .email(EMAIL)
             .name(NAME)
             .role(Role.GUEST)
+            .build();
+    }
+
+    public static Member createUserWithId(Long id) {
+        return Member.builder()
+            .id(id)
+            .kakaoId(KAKAO_ID)
+            .email(EMAIL)
+            .name(NAME)
+            .role(Role.USER)
+            .build();
+    }
+
+    public static Member createAdminWithId(Long id) {
+        return Member.builder()
+            .id(id)
+            .kakaoId(KAKAO_ID)
+            .email(EMAIL)
+            .name(NAME)
+            .role(Role.ADMIN)
             .build();
     }
 

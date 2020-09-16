@@ -45,8 +45,8 @@ class MemberControllerTest extends BaseControllerTestUtil {
     @Test
     void put() throws Exception {
         given(bearerInterceptor.preHandle(any(), any(), any())).willReturn(true);
-        given(argumentResolver.resolveArgument(any(), any(), any(), any())).willReturn(MemberFixture.createWithId(1L));
-        when(memberService.findByKakaoId(anyLong())).thenReturn(MemberFixture.createWithId(1L));
+        given(argumentResolver.resolveArgument(any(), any(), any(), any())).willReturn(MemberFixture.createGuestWithId(1L));
+        when(memberService.findByKakaoId(anyLong())).thenReturn(MemberFixture.createGuestWithId(1L));
 
         doPut(BASE_PATH, MemberFixture.createUpdateRequest());
     }
@@ -55,8 +55,8 @@ class MemberControllerTest extends BaseControllerTestUtil {
     @Test
     void updateRequiredInfo() throws Exception {
         given(bearerInterceptor.preHandle(any(), any(), any())).willReturn(true);
-        given(argumentResolver.resolveArgument(any(), any(), any(), any())).willReturn(MemberFixture.createWithId(1L));
-        when(memberService.findByKakaoId(anyLong())).thenReturn(MemberFixture.createWithId(1L));
+        given(argumentResolver.resolveArgument(any(), any(), any(), any())).willReturn(MemberFixture.createGuestWithId(1L));
+        when(memberService.findByKakaoId(anyLong())).thenReturn(MemberFixture.createGuestWithId(1L));
 
         doPatch(BASE_PATH, MemberFixture.createRequiredInfoRequest());
     }
@@ -65,8 +65,8 @@ class MemberControllerTest extends BaseControllerTestUtil {
     @Test
     void delete() throws Exception {
         given(bearerInterceptor.preHandle(any(), any(), any())).willReturn(true);
-        given(argumentResolver.resolveArgument(any(), any(), any(), any())).willReturn(MemberFixture.createWithId(1L));
-        when(memberService.findByKakaoId(anyLong())).thenReturn(MemberFixture.createWithId(1L));
+        given(argumentResolver.resolveArgument(any(), any(), any(), any())).willReturn(MemberFixture.createGuestWithId(1L));
+        when(memberService.findByKakaoId(anyLong())).thenReturn(MemberFixture.createGuestWithId(1L));
 
         doDelete(BASE_PATH);
     }

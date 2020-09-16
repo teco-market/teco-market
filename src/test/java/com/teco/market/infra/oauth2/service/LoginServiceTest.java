@@ -46,7 +46,7 @@ class LoginServiceTest {
         when(kakaoAPIService.fetchUserInfo(any(KakaoTokenResponse.class))).thenReturn(
             Mono.just(LoginFixture.createMockKakaoUserResponse()));
         when(memberService.existsByKakaoId(anyLong())).thenReturn(EXIST);
-        when(memberService.findByKakaoId(anyLong())).thenReturn(MemberFixture.createWithId(1L));
+        when(memberService.findByKakaoId(anyLong())).thenReturn(MemberFixture.createGuestWithId(1L));
         when(jwtTokenProvider.createToken(anyString())).thenReturn(USER_TOKEN);
 
         assertThat(loginService.createJwtTokenUrl(CODE_VALUE)).isEqualTo(URL);

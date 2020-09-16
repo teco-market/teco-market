@@ -20,7 +20,7 @@ class MemberRepositoryTest {
     @DisplayName("카카오 아이디를 통해 회원을 조회할 수 있다.")
     @Test
     void findByKakaoId() {
-        Member savedMember = memberRepository.save(MemberFixture.createWithId(1L));
+        Member savedMember = memberRepository.save(MemberFixture.createGuestWithId(1L));
         Optional<Member> findMember = memberRepository.findByKakaoId(savedMember.getKakaoId());
 
         assertAll(

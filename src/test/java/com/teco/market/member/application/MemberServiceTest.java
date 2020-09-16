@@ -34,7 +34,7 @@ class MemberServiceTest {
     @DisplayName("회원을 정상적으로 생성, 반환한다.")
     @Test
     void create() {
-        Member savedMember = MemberFixture.createWithId(1L);
+        Member savedMember = MemberFixture.createGuestWithId(1L);
         when(memberRepository.save(any())).thenReturn(savedMember);
 
         MemberResponse response = memberService.createMember(MemberFixture.createMemberRequest());
@@ -45,7 +45,7 @@ class MemberServiceTest {
     @DisplayName("회원을 정상적으로 찾을 수 있다.")
     @Test
     void retrieve() {
-        Optional<Member> expected = Optional.of(MemberFixture.createWithId(1L));
+        Optional<Member> expected = Optional.of(MemberFixture.createGuestWithId(1L));
         when(memberRepository.findById(anyLong())).thenReturn(expected);
 
         MemberResponse memberResponse = memberService.retrieveById(1L);
@@ -56,7 +56,7 @@ class MemberServiceTest {
     @DisplayName("카카오 아이디로 회원을 찾을 수 있다.")
     @Test
     void findByKakaoId() {
-        Optional<Member> expected = Optional.of(MemberFixture.createWithId(1L));
+        Optional<Member> expected = Optional.of(MemberFixture.createGuestWithId(1L));
         when(memberRepository.findByKakaoId(anyLong())).thenReturn(expected);
 
         Member response = memberService.findByKakaoId(1L);
@@ -67,7 +67,7 @@ class MemberServiceTest {
     @DisplayName("카카오 아이디로 회원을 조회할 수 있다.")
     @Test
     void existsByKakaoId() {
-        when(memberRepository.findByKakaoId(anyLong())).thenReturn(Optional.of(MemberFixture.createWithId(1L)));
+        when(memberRepository.findByKakaoId(anyLong())).thenReturn(Optional.of(MemberFixture.createGuestWithId(1L)));
 
         assertThat(memberService.existsByKakaoId(1L)).isTrue();
     }
@@ -83,14 +83,14 @@ class MemberServiceTest {
     @DisplayName("회원의 정보를 업데이트 할 수 있다.")
     @Test
     void update() {
-        when(memberRepository.findById(any())).thenReturn(Optional.of(MemberFixture.createWithId(1L)));
+        when(memberRepository.findById(any())).thenReturn(Optional.of(MemberFixture.createGuestWithId(1L)));
         memberService.update(1L, MemberFixture.createUpdateRequest());
     }
 
     @DisplayName("회원의 필수정보를 입력받아 수정한다.")
     @Test
     void updateRequriedInfo() {
-        when(memberRepository.findById(any())).thenReturn(Optional.of(MemberFixture.createWithId(1L)));
+        when(memberRepository.findById(any())).thenReturn(Optional.of(MemberFixture.createGuestWithId(1L)));
         when(generationRepository.findById(any())).thenReturn(Optional.of(GenerationFixture.createWithId(1L)));
 
         memberService.updateRequiredInfo(1L, MemberFixture.createRequiredInfoRequest());
