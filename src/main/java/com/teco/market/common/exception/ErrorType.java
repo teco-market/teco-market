@@ -18,6 +18,7 @@ public enum ErrorType {
     INVALID_IMAGE("I102", "유효하지 않은 이미지입니다."),
     INVALID_WRITER("I104", "글 작성자가 아닙니다."),
     INVALID_SLACK("I105", "적절하지 않은 슬랙 요청입니다."),
+    INVALID_FILE("I106", "적절하지 않은 파일입니다. 업로드 할 수 없습니다."),
     VALID_TOKEN_BUT_NOT_FOUND_MEMBER("I103", "토큰은 유효하나, 존재하지 않는 사용자입니다.(회원 탈퇴 한 듯?"),
 
     UNAUTHORIZED_MEMBER("I103", "해당 회원은 접근할 권한이 없습니다.");

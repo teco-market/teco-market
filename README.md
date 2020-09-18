@@ -46,8 +46,8 @@
     - [x] 외부 API 테스트 추가
 - [x] 도메인 중복 CRUD 추상화
 - [x] 사용자의 권한을 확인하여 선택적으로 권한을 제공하는 로직 구현
-- [ ] API Serialize & Deserialize 구현 
 - [ ] 이미지 업로드 로직 수정
+- [ ] API Serialize & Deserialize 구현 
 - [ ] 도메인 리팩토링
 - [ ] 슬랙 API 사용 - JsonProperty를 활용하여, 불필요한 클래스 삭제
 - [ ] 도메인별 부족한 테스트 추가
