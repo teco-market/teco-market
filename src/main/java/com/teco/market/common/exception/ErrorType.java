@@ -1,10 +1,10 @@
 package com.teco.market.common.exception;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 @Getter
-@AllArgsConstructor
+@RequiredArgsConstructor
 public enum ErrorType {
     BUSINESS("B100", "비즈니스 Exception이 발생하였습니다. 사용하는 곳을 확인하세요."),
     NOT_FOUND("N100", "값을 찾을 수 없습니다."),
@@ -23,6 +23,6 @@ public enum ErrorType {
 
     UNAUTHORIZED_MEMBER("I103", "해당 회원은 접근할 권한이 없습니다.");
 
-    private String code;
-    private String message;
+    private final String code;
+    private final String message;
 }

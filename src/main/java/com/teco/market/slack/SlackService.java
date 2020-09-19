@@ -10,9 +10,9 @@ import com.teco.market.post.service.PostService;
 import com.teco.market.slack.notify.Channel;
 import com.teco.market.slack.notify.SlackMessageRequest;
 import com.teco.market.slack.notify.SlackNotifier;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Service
 public class SlackService {
     private final SlackNotifier notifier;

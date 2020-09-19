@@ -30,7 +30,8 @@ public class PostDetailResponse {
 
     @QueryProjection
     @Builder
-    public PostDetailResponse(Long id, String title, MemberResponse memberResponse, String category, List<String> photos,
+    public PostDetailResponse(Long id, String title, MemberResponse memberResponse, String category,
+        List<String> photos,
         String content, List<CommentResponse> commentResponses, BigDecimal price, Long likeCount) {
         this.id = id;
         this.title = title;
@@ -44,17 +45,20 @@ public class PostDetailResponse {
     }
 
     public static PostDetailResponse of(Post post, Long likeCount, List<Comment> comments) {
+        List<String> photos = post.getPhotos().stream()
+            .map(Photo::getUrl).collect(Collectors.toList());
+        List<CommentResponse> commentResponses = comments.stream()
+            .map(comment -> new CommentResponse(comment.getMember().getName(), comment.getContent()))
+            .collect(Collectors.toList());
+
         return PostDetailResponse.builder()
             .id(post.getId())
             .title(post.getTitle())
             .memberResponse(MemberResponse.of(post.getMember()))
             .category(post.getCategory().getName())
-            .photos(post.getPhotos().stream()
-                .map(Photo::getUrl).collect(Collectors.toList()))
+            .photos(photos)
             .content(post.getContent())
-            .commentResponses(comments.stream()
-                .map(comment -> new CommentResponse(comment.getMember().getName(), comment.getContent()))
-                .collect(Collectors.toList()))
+            .commentResponses(commentResponses)
             .price(post.getPrice())
             .likeCount(likeCount)
             .build();

@@ -2,11 +2,11 @@ package com.teco.market.common.exception.invalid;
 
 import com.teco.market.common.exception.BusinessException;
 import com.teco.market.common.exception.ErrorType;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 @Getter
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class InvalidException extends BusinessException {
     private final ErrorType errorType;
 

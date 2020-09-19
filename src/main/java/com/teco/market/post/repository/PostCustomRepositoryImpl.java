@@ -15,11 +15,12 @@ import com.querydsl.core.QueryResults;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.teco.market.post.web.PostResponse;
 import com.teco.market.post.web.QPostResponse;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class PostCustomRepositoryImpl implements PostCustomRepository {
     private static final int REPRESENTATIVE_COUNT = 15;
+
     private final JPAQueryFactory queryFactory;
 
     @Override

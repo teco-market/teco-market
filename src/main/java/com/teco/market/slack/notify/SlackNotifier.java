@@ -13,9 +13,9 @@ import com.teco.market.common.exception.InvalidSlackMessageException;
 import com.teco.market.member.domain.Member;
 import com.teco.market.member.web.MemberResponse;
 import com.teco.market.post.Post;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Component
 public class SlackNotifier {
     private final RestTemplate restTemplate;

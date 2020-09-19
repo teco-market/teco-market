@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.teco.market.post.web.PagedPostResponses;
 import com.teco.market.post.web.PostResponse;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @RestController
 public class SearchController {
     private final SearchQueryService searchService;
@@ -18,6 +18,7 @@ public class SearchController {
     @GetMapping("/search")
     public ResponseEntity search(SearchCondition searchCondition, Pageable pageable) {
         Page<PostResponse> posts = searchService.search(searchCondition, pageable);
+
         return ResponseEntity.ok(PagedPostResponses.of(posts));
     }
 }

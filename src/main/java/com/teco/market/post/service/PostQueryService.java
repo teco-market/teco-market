@@ -15,9 +15,9 @@ import com.teco.market.post.Post;
 import com.teco.market.post.repository.PostRepository;
 import com.teco.market.post.web.PostDetailResponse;
 import com.teco.market.post.web.PostResponse;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Transactional(readOnly = true)
 @Service
 public class PostQueryService {

@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 import com.teco.market.like.repository.LikeRepository;
 import com.teco.market.like.web.MyLikeResponse;
 import com.teco.market.member.domain.Member;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Service
 public class LikeQueryService {
     private final LikeRepository likeRepository;

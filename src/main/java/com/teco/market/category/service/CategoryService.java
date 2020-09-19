@@ -4,9 +4,9 @@ import org.springframework.stereotype.Service;
 
 import com.teco.market.category.Category;
 import com.teco.market.category.CategoryRepository;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Service
 public class CategoryService {
     private final CategoryRepository categoryRepository;

@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 
 import com.teco.market.comment.repository.CommentRepository;
 import com.teco.market.comment.web.MyCommentResponse;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Service
 public class CommentQueryService {
     private final CommentRepository commentRepository;

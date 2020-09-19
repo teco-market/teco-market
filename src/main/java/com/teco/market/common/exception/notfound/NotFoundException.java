@@ -2,10 +2,10 @@ package com.teco.market.common.exception.notfound;
 
 import com.teco.market.common.exception.BusinessException;
 import com.teco.market.common.exception.ErrorType;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Getter
 public class NotFoundException extends BusinessException {
     private final ErrorType errorType;

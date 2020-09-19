@@ -20,13 +20,14 @@ import com.teco.market.post.Post;
 import com.teco.market.post.repository.PostRepository;
 import com.teco.market.post.web.PostRequest;
 import com.teco.market.post.web.PostUpdateRequest;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Transactional
 @Service
 public class PostService {
     private static final int FIRST_PHOTO = 0;
+    public static final String POST_IMAGE_PATH = "post.thumbnail/";
 
     private final PostRepository postRepository;
     private final CategoryRepository categoryRepository;
@@ -55,12 +56,12 @@ public class PostService {
     }
 
     private Thumbnail thumbnail(MultipartFile file) {
-        return new Thumbnail(uploadService.uploadThumbnail(file));
+        return new Thumbnail(uploadService.upload(file, POST_IMAGE_PATH));
     }
 
     private List<String> savePhotos(List<MultipartFile> files) {
         return files.stream()
-            .map(uploadService::upload)
+            .map(file -> uploadService.upload(file, POST_IMAGE_PATH))
             .collect(Collectors.toList());
     }
 

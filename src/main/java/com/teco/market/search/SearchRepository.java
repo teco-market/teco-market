@@ -5,7 +5,6 @@ import static org.springframework.util.StringUtils.*;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.support.PageableExecutionUtils;
 import org.springframework.stereotype.Repository;
 
@@ -14,9 +13,9 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.teco.market.post.web.PostResponse;
 import com.teco.market.post.web.QPostResponse;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Repository
 public class SearchRepository {
     private final JPAQueryFactory jpaQueryFactory;

@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.teco.market.member.domain.Member;
 import com.teco.market.slack.notify.SlackMessageRequest;
 import com.teco.market.support.LoginMember;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @RestController
 public class SlackController {
     private final SlackService slackService;
