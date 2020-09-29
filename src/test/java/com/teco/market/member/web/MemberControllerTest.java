@@ -61,7 +61,7 @@ class MemberControllerTest extends BaseControllerTestUtil {
         doPatch(BASE_PATH, MemberFixture.createRequiredInfoRequest());
     }
 
-    @DisplayName("회원을 정상적으로 삭제한다..")
+    @DisplayName("회원을 정상적으로 삭제한다.")
     @Test
     void delete() throws Exception {
         given(bearerInterceptor.preHandle(any(), any(), any())).willReturn(true);

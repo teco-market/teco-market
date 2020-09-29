@@ -30,7 +30,7 @@ public class Member extends BaseEntity {
     private Role role;
     private String nickname;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "generation_id")
     private Generation generation;
 
