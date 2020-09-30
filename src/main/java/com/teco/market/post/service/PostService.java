@@ -44,7 +44,7 @@ public class PostService {
             .category(category)
             .content(request.getContent())
             .photos(savePhotos(files))
-            .thumbnail(thumbnail(files.get(FIRST_PHOTO)))
+            .thumbnail(uploadService.upload(files.get(FIRST_PHOTO), POST_IMAGE_PATH))
             .build();
 
         postRepository.save(post);
@@ -53,10 +53,6 @@ public class PostService {
     public Post findById(Long id) {
         return postRepository.findById(id)
             .orElseThrow(NotFoundPostException::new);
-    }
-
-    private Thumbnail thumbnail(MultipartFile file) {
-        return new Thumbnail(uploadService.upload(file, POST_IMAGE_PATH));
     }
 
     private List<String> savePhotos(List<MultipartFile> files) {

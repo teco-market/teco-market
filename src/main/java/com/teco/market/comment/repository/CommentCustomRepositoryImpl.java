@@ -1,7 +1,7 @@
 package com.teco.market.comment.repository;
 
 import static com.teco.market.comment.QComment.*;
-import static com.teco.market.member.QMember.*;
+import static com.teco.market.member.domain.QMember.*;
 import static com.teco.market.post.QPost.*;
 
 import org.springframework.data.domain.Page;

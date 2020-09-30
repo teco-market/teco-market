@@ -11,6 +11,7 @@ secrets:
       secret-key: secretsecretsecretsecretsecretsecretsecretsecretsecretsecretsecretsecretsecret
       expire-length: 2147483646
 
+
 server:
   uri: http://localhost:8080
 
@@ -40,3 +41,13 @@ slack:
 spring:
   jpa:
     open-in-view: false
+    properties:
+      hibernate.default_batch_fetch_size: 500
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true

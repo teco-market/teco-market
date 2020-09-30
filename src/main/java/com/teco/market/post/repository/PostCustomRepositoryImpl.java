@@ -2,7 +2,7 @@ package com.teco.market.post.repository;
 
 import static com.teco.market.category.QCategory.*;
 import static com.teco.market.image.QThumbnail.*;
-import static com.teco.market.member.QMember.*;
+import static com.teco.market.member.domain.QMember.*;
 import static com.teco.market.post.QPost.*;
 
 import java.util.List;

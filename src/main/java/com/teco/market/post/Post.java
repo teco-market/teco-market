@@ -13,12 +13,10 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 import com.teco.market.BaseEntity;
 import com.teco.market.category.Category;
 import com.teco.market.image.Photo;
-import com.teco.market.image.Thumbnail;
 import com.teco.market.member.domain.Member;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -39,12 +37,11 @@ public class Post extends BaseEntity {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @OneToOne(mappedBy = "post")
-    private Thumbnail thumbnail;
+    private String thumbnail;
 
     private BigDecimal price;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "photo", joinColumns = @JoinColumn(name = "post_id"))
     private List<Photo> photos = new ArrayList<>();
 
@@ -52,7 +49,7 @@ public class Post extends BaseEntity {
     private String content;
 
     @Builder
-    public Post(String title, Member member, Category category, Thumbnail thumbnail, List<String> photos,
+    public Post(String title, Member member, Category category, String thumbnail, List<String> photos,
         BigDecimal price, String content) {
         this.title = title;
         this.member = member;

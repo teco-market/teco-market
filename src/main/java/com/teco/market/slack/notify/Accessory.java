@@ -15,7 +15,7 @@ public class Accessory {
 
     private Accessory(Post post) {
         this.type = IMAGE;
-        this.image_url = post.getThumbnail().getUrl();
+        this.image_url = post.getThumbnail();
         this.alt_text = post.getTitle();
     }
 
