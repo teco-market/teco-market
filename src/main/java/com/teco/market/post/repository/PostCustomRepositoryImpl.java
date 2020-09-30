@@ -1,7 +1,6 @@
 package com.teco.market.post.repository;
 
 import static com.teco.market.category.QCategory.*;
-import static com.teco.market.image.QThumbnail.*;
 import static com.teco.market.member.domain.QMember.*;
 import static com.teco.market.post.QPost.*;
 
@@ -26,17 +25,13 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
     @Override
     public List<PostResponse> findRepresentativePosts() {
         return queryFactory.select(new QPostResponse(
-            thumbnail.url.as("thumbnail"),
-            post.title.as("title"),
-            member.name.as("name"),
-            member.nickname.as("nickname"),
-            category.name.as("category"),
-            post.price.as("price")
+            post.as("post"),
+            member.as("member"),
+            category.as("category")
         ))
             .from(post)
-            .leftJoin(post.thumbnail, thumbnail)
-            .leftJoin(post.category, category)
-            .leftJoin(post.member, member)
+            .innerJoin(post.category, category)
+            .innerJoin(post.member, member)
             .limit(REPRESENTATIVE_COUNT)
             .fetch();
     }
@@ -44,15 +39,11 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
     @Override
     public Page<PostResponse> findPosts(Pageable pageable) {
         QueryResults<PostResponse> results = queryFactory.select(new QPostResponse(
-            thumbnail.url.as("thumbnail"),
-            post.title.as("title"),
-            member.name.as("name"),
-            member.nickname.as("nickname"),
-            category.name.as("category"),
-            post.price.as("price")
+            post.as("post"),
+            member.as("member"),
+            category.as("category")
         ))
             .from(post)
-            .leftJoin(post.thumbnail, thumbnail)
             .leftJoin(post.category, category)
             .leftJoin(post.member, member)
             .offset(pageable.getOffset())

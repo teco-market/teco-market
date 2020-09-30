@@ -1,5 +1,7 @@
 package com.teco.market.search;
 
+import static com.teco.market.category.QCategory.*;
+import static com.teco.market.member.domain.QMember.*;
 import static com.teco.market.post.QPost.*;
 import static org.springframework.util.StringUtils.*;
 
@@ -24,12 +26,9 @@ public class SearchRepository {
         OrderConditions orderConditions = new OrderConditions(searchCondition);
 
         QueryResults<PostResponse> result = jpaQueryFactory.select(new QPostResponse(
-            post.thumbnail.url.as("thumbnail"),
-            post.title.as("title"),
-            post.member.name.as("name"),
-            post.member.nickname.as("nickname"),
-            post.category.name.as("category"),
-            post.price.as("price")
+            post.as("post"),
+            member.as("member"),
+            category.as("category")
         ))
             .from(post)
             .where(categoryEq(searchCondition.getCategoryId()),
