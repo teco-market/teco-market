@@ -26,8 +26,9 @@ public class LikeCustomRepositoryImpl implements LikeCustomRepository {
             post.price.as("postPrice")
         ))
             .from(like)
-            .leftJoin(like.post, post)
+            .innerJoin(like.post, post)
             .where(like.member.eq(member))
+            .setHint("org.hibernate.readOnly", true)
             .fetchResults();
 
         return PageableExecutionUtils.getPage(results.getResults(), pageable, results::getTotal);

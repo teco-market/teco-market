@@ -25,8 +25,10 @@ public class CommentCustomRepositoryImpl implements CommentCustomRepository {
             comment.content.as("commentContent")
         ))
             .from(comment)
-            .leftJoin(comment.member, member)
-            .leftJoin(comment.post, post)
+            .innerJoin(comment.member, member)
+            .fetchJoin()
+            .innerJoin(comment.post, post)
+            .fetchJoin()
             .where(comment.member.id.eq(id))
             .fetchResults();
         return PageableExecutionUtils.getPage(results.getResults(), pageable, results::getTotal);

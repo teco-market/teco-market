@@ -31,7 +31,9 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
         ))
             .from(post)
             .innerJoin(post.category, category)
+            .fetchJoin()
             .innerJoin(post.member, member)
+            .fetchJoin()
             .limit(REPRESENTATIVE_COUNT)
             .fetch();
     }
@@ -44,8 +46,10 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
             category.as("category")
         ))
             .from(post)
-            .leftJoin(post.category, category)
-            .leftJoin(post.member, member)
+            .innerJoin(post.category, category)
+            .fetchJoin()
+            .innerJoin(post.member, member)
+            .fetchJoin()
             .offset(pageable.getOffset())
             .limit(pageable.getPageSize())
             .fetchResults();
